@@ -1,3 +1,7 @@
+@import url("./css/login.css");
+
+/*For newly created css files you need to import them here*/
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
