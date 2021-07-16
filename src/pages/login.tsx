@@ -11,8 +11,8 @@ export function LoginPage() {
   const { routeTo } = useRouting()
 
   const initialValues = {
-    email: "admin",
-    password: "scoala1deHackeri",
+    email: "some@email.com",
+    password: "somePaSsWoRd",
   }
 
   const onSubmit = async (creds: LoginForm) => {
