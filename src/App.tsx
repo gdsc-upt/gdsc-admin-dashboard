@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import "./App.scss"
+import "./styles/general/App.scss"
 import { Redirect, Route } from "react-router-dom"
 import { MyButton } from "./components/test-button"
 import { route, startUrl, urls } from "./routing"
-import { LoginPage } from "./pages/login-page/login"
+import { LoginPage } from "./pages/login"
 import { useTitle } from "./hooks/general-hooks"
 import { Dashboard } from "./pages/dashboard"
 

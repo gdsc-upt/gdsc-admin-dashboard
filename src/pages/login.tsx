@@ -1,7 +1,14 @@
 import React from "react"
 import { Form, Formik, useFormik } from "formik"
-import { urls, useRouting } from "../../routing"
-import logo from "../../images/gdsc-logo-and-text.png"
+import logo from "../assets/images/gdsc-logo-and-text.png"
+import { urls, useRouting } from "../routing"
+
+const styles = {
+  header: {
+    paddingLeft: "3em",
+    paddingRight: "3em",
+  },
+}
 
 export type LoginForm = {
   email: string
@@ -28,7 +35,7 @@ export function LoginPage() {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {({ handleChange }) => (
           <div>
-            <div className="header">
+            <div style={styles.header}>
               <img src={logo} alt="GDSC logo" />
             </div>
             <Form className="Form">
