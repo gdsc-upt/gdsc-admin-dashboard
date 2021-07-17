@@ -1,7 +1,7 @@
 import React from "react"
 import { Form, Formik, useFormik } from "formik"
-import { urls, useRouting } from "../routing"
-import logo from "../images/gdsc-logo-and-text.png"
+import { urls, useRouting } from "../../routing"
+import logo from "../../images/gdsc-logo-and-text.png"
 
 export type LoginForm = {
   email: string
@@ -13,7 +13,7 @@ export function LoginPage() {
 
   const initialValues = {
     email: "admin",
-    password: "scoala1deHackeri",
+    password: "admin",
   }
 
   const onSubmit = async (creds: LoginForm) => {
@@ -32,7 +32,7 @@ export function LoginPage() {
               <img src={logo} alt="GDSC logo" />
             </div>
             <Form className="Form">
-              <span>Admin Dashboard</span>
+              <span className="title">Admin Dashboard</span>
               <input
                 type="text"
                 placeholder="Enter your email"

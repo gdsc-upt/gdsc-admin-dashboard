@@ -3,7 +3,7 @@ import "./App.scss"
 import { Redirect, Route } from "react-router-dom"
 import { MyButton } from "./components/test-button"
 import { route, startUrl, urls } from "./routing"
-import { LoginPage } from "./pages/login"
+import { LoginPage } from "./pages/login-page/login"
 import { useTitle } from "./hooks/general-hooks"
 import { Dashboard } from "./pages/dashboard"
 
