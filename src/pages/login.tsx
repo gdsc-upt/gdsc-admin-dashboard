@@ -1,6 +1,5 @@
 import React from "react"
 import { Form, Formik, useFormik } from "formik"
-import logo from "../assets/images/gdsc-logo-and-text.png"
 import { urls, useRouting } from "../routing"
 
 const styles = {
@@ -36,7 +35,10 @@ export function LoginPage() {
         {({ handleChange }) => (
           <div>
             <div style={styles.header}>
-              <img src={logo} alt="GDSC logo" />
+              <img
+                src={require("../assets/images/gdsc-logo-and-text.png").default}
+                alt="GDSC logo"
+              />
             </div>
             <Form className="Form">
               <span className="title">Admin Dashboard</span>

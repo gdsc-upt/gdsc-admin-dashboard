@@ -24,6 +24,7 @@
       {
         "semi": false
       }
-    ]
+    ],
+    "global-require": "off"
   }
 }
