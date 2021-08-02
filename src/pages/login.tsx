@@ -1,6 +1,13 @@
 import React from "react"
-import { Form, Formik } from "formik"
+import { Form, Formik, useFormik } from "formik"
 import { urls, useRouting } from "../routing"
+
+const styles = {
+  header: {
+    paddingLeft: "3em",
+    paddingRight: "3em",
+  },
+}
 
 export type LoginForm = {
   email: string
@@ -11,8 +18,8 @@ export function LoginPage() {
   const { routeTo } = useRouting()
 
   const initialValues = {
-    email: "some@email.com",
-    password: "somePaSsWoRd",
+    email: "admin",
+    password: "admin",
   }
 
   const onSubmit = async (creds: LoginForm) => {
@@ -24,20 +31,30 @@ export function LoginPage() {
 
   return (
     <div className="Login">
-      <p>This is login page!</p>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {({ handleChange }) => (
-          <Form className="Form">
-            <label htmlFor="email">
-              <p>Email:</p>
-              <input type="text" name="email" onChange={handleChange} />
-            </label>
-            <label htmlFor="password">
-              <p>Password:</p>
-              <input type="password" name="password" onChange={handleChange} />
-            </label>
-            <button type="submit">Go to dashboard</button>
-          </Form>
+          <div>
+            <div style={styles.header}>
+              <img
+                src={require("../assets/images/gdsc-logo-and-text.png").default}
+                alt="GDSC logo"
+              />
+            </div>
+            <Form className="Form">
+              <span className="title">Admin Dashboard</span>
+              <input
+                type="text"
+                placeholder="Enter your email"
+                onChange={handleChange}
+              />
+              <input
+                type="password"
+                placeholder="Enter your password"
+                onChange={handleChange}
+              />
+              <button type="submit">LOGIN</button>
+            </Form>
+          </div>
         )}
       </Formik>
     </div>
