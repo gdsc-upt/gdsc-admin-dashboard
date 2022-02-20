@@ -5,6 +5,7 @@ import { getApiMembersList } from "../services/members"
 export function Dashboard() {
   useEffectAsync(async () => {
     const members = await getApiMembersList()
+    // eslint-disable-next-line no-console
     console.log(members)
   }, [])
 

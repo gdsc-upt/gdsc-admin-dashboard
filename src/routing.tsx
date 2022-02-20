@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export const urls = {
   login: () => "/login",
@@ -10,17 +10,17 @@ export const urls = {
 export const startUrl = urls.login
 
 export function useRouting() {
-  const history = useHistory()
+  const navigate = useNavigate()
 
   function routeTo(fn: () => string): void
   function routeTo<T>(fn: (p: T) => string, params: T): void
   function routeTo<T>(fn: (p?: T) => string, params?: T) {
-    history.push(fn(params))
+    navigate(fn(params))
   }
 
   return {
     routeTo,
-    history,
+    history: navigate,
   }
 }
 

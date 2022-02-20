@@ -1,5 +1,5 @@
 import React from "react"
-import { Form, Formik, useFormik } from "formik"
+import { Form, Formik } from "formik"
 import { urls, useRouting } from "../routing"
 
 const styles = {
@@ -23,6 +23,7 @@ export function LoginPage() {
   }
 
   const onSubmit = async (creds: LoginForm) => {
+    // eslint-disable-next-line no-console
     console.log(creds)
     routeTo(urls.dashboard)
   }

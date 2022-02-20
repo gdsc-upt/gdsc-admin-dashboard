@@ -1,8 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 import "./styles/general/App.scss"
-import { Redirect, Route } from "react-router-dom"
-import { MyButton } from "./components/test-button"
-import { route, startUrl, urls } from "./routing"
+import { Route, Routes } from "react-router-dom"
 import { LoginPage } from "./pages/login"
 import { useTitle } from "./hooks/general-hooks"
 import { Dashboard } from "./pages/dashboard"
@@ -11,11 +9,11 @@ function App() {
   useTitle("Admin-Dashboard")
   return (
     <div className="App">
-      <Route exact path="/">
-        <Redirect to={startUrl()} />
-      </Route>
-      <Route exact path={route(urls.login)} component={LoginPage} />
-      <Route exact path={route(urls.dashboard)} component={Dashboard} />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </div>
   )
 }
