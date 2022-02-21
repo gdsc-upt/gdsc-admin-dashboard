@@ -1,14 +1,23 @@
-## How to start the project:
+# GDSC Admin Dashboard
 
-You need yarn installed. 
-If you don't have it installed you should run npm install -g yarn
+### Setup:
 
-In the project directory, you need to run
-yarn install
-To start the project you can run:
-`yarn start`
+* Install yarn using `npm install -g yarn`
 
+* Install project dependencies with `yarn install`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Start project: `yarn start`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Good to know:
+
+* Write beautiful and readable code, **always**!
+* **Always** run `yarn lint` before making a commit
+
+### Resources:
+
+* Backend documentation: https://dev.api.gdscupt.tech/swagger
+
+* You can learn more in
+  the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+* To learn React, check out the [React documentation](https://reactjs.org/).

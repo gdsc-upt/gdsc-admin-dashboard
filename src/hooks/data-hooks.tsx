@@ -3,8 +3,8 @@ import { useEffectAsync } from "./async-hooks"
 
 export function useData<T>(
   dataLoader: (args?: unknown) => Promise<T>,
-  deps: any[] = [],
-  param?: any
+  param?: unknown,
+  deps = []
 ) {
   const [data, setData] = useState<T>()
   const [error, setError] = useState<string>()
@@ -17,6 +17,7 @@ export function useData<T>(
       setData(newData)
       setError(undefined)
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log(e)
     } finally {
       setIsLoading(false)
