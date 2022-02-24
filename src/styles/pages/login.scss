@@ -37,7 +37,6 @@ img {
 }
 
 @media screen and (max-width: 400px) {
-
   img {
     padding-bottom: 2em;
     padding-top: 1em;
@@ -47,7 +46,6 @@ img {
     width: 100%;
     float: none;
   }
-  
 }
 
 .text-center {
@@ -62,7 +60,7 @@ button {
   color: #9b9b9b;
   font: 70% JetBrains Mono, monospace;
   font-weight: bold;
-  transition-duration: .4s;
+  transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 5px;
   border: 2px solid #efefef;

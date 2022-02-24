@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 export function MyButton({ text }: { text: string }) {
   return (
@@ -8,5 +8,5 @@ export function MyButton({ text }: { text: string }) {
       </div>
       <div>{text}</div>
     </div>
-  )
+  );
 }

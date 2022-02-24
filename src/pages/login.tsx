@@ -1,32 +1,32 @@
-import React from "react"
-import { Form, Formik } from "formik"
-import { urls, useRouting } from "../routing"
+import React from "react";
+import { Form, Formik } from "formik";
+import { urls, useRouting } from "../routing";
 
 const styles = {
   header: {
     paddingLeft: "3em",
     paddingRight: "3em",
   },
-}
+};
 
 export type LoginForm = {
-  email: string
-  password: string
-}
+  email: string;
+  password: string;
+};
 
 export function LoginPage() {
-  const { routeTo } = useRouting()
+  const { routeTo } = useRouting();
 
   const initialValues = {
     email: "admin",
     password: "admin",
-  }
+  };
 
   const onSubmit = async (creds: LoginForm) => {
     // eslint-disable-next-line no-console
-    console.log(creds)
-    routeTo(urls.dashboard)
-  }
+    console.log(creds);
+    routeTo(urls.dashboard);
+  };
 
   // Formik will be used for all types of forms
 
@@ -59,5 +59,5 @@ export function LoginPage() {
         )}
       </Formik>
     </div>
-  )
+  );
 }
