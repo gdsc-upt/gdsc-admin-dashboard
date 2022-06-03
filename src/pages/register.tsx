@@ -2,9 +2,9 @@ import React from 'react';
 import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { useRouting } from '../routing';
-import { login } from '../services/auth.service';
-import { LoginRequest } from '../models/login-request';
-import { AUTH_URLS, URLS } from '../helpers/constants';
+import { register } from '../services/auth.service';
+import { RegisterRequest } from '../models/register-request';
+import { AUTH_URLS } from '../helpers/constants';
 
 const styles = {
   header: {
@@ -13,22 +13,28 @@ const styles = {
   },
 };
 
-const initialValues: LoginRequest = {
+const initialValues: RegisterRequest = {
   username: 'admin',
+  email: 'admin@example.com',
   password: 'admin',
 };
 
-export function LoginPage() {
+export function RegisterPage() {
   const { routeTo } = useRouting();
 
-  const onSubmit = async ({ password, username }: LoginRequest) => {
-    const response = await login(username, password);
-    if (response) {
-      return routeTo(URLS.dashboard);
+  const onSubmit = async ({ username, email, password }: RegisterRequest) => {
+    const response = await register(username, email, password);
+    // if (response) {
+    //   return routeTo(urls.dashboard);
+    // }
+    if (!response) {
+      console.error('Error');
     }
 
     return routeTo(AUTH_URLS.login);
   };
+
+  // Formik will be used for all types of forms
 
   return (
     <div className="Login">
@@ -42,11 +48,17 @@ export function LoginPage() {
               />
             </div>
             <Form className="Form">
-              <span className="title">Admin Dashboard</span>
+              <span className="title">Admin Dashboard Register</span>
               <input
                 type="text"
                 name="username"
-                placeholder="Enter your email or username"
+                placeholder="Enter your username"
+                onChange={handleChange}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
                 onChange={handleChange}
               />
               <input
@@ -58,7 +70,7 @@ export function LoginPage() {
               <button type="submit">LOGIN</button>
 
               <span>
-                No account? <Link to="/register">Register</Link>
+                Already have an account? <Link to="/login">Log in</Link>
               </span>
             </Form>
           </div>

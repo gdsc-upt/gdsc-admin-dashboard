@@ -1,21 +1,10 @@
-import { useNavigate } from "react-router-dom";
-
-export const urls = {
-  login: () => "/login",
-  dashboard: () => "/dashboard",
-
-  urlWithSomeParam: (p: { product: string }) => `/app/view/${p.product}`,
-};
-
-export const startUrl = urls.login;
+import { useNavigate } from 'react-router-dom';
 
 export function useRouting() {
   const navigate = useNavigate();
 
-  function routeTo(fn: () => string): void;
-  function routeTo<T>(fn: (p: T) => string, params: T): void;
-  function routeTo<T>(fn: (p?: T) => string, params?: T) {
-    navigate(fn(params));
+  function routeTo(url: string) {
+    navigate(url, { replace: true });
   }
 
   return {
@@ -27,6 +16,6 @@ export function useRouting() {
 export function route(fn: () => string): string;
 export function route<T>(fn: (p: T) => string, params: Array<keyof T>): string;
 export function route<T>(fn: (p: T) => string, params: Array<keyof T> = []) {
-  const parameter = Object.fromEntries(params.map((p) => [p, `:${String(p)}`]));
+  const parameter = Object.fromEntries(params.map(p => [p, `:${String(p)}`]));
   return fn(parameter as any);
 }

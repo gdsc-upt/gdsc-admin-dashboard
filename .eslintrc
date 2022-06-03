@@ -12,6 +12,7 @@
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": "off",
+    "react/require-default-props": "off",
     "no-redeclare": "off",
     "no-unused-vars": "off",
     "no-use-before-define": "off",
