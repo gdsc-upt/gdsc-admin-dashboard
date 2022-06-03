@@ -1,11 +1,11 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
-import { useRouting } from '../routing';
+import { useRouting } from '../../routing';
 import { register } from '../services/auth.service';
 import { RegisterRequest } from '../models/register-request';
-import { AUTH_URLS } from '../helpers/constants';
-import { Logo } from '../components/logo';
+import { AUTH_URLS } from '../../helpers/constants';
+import { Logo } from '../../components/logo';
 
 const initialValues: RegisterRequest = {
   username: 'admin',

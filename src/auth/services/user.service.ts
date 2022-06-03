@@ -1,6 +1,6 @@
-import axios from "axios";
-import { API_URL } from "../helpers/constants";
-import { authHeader } from "./auth-header";
+import axios from 'axios';
+import { API_URL } from '../../helpers/constants';
+import { authHeader } from './auth-header';
 
 const USER_URL = `${API_URL}roles`;
 

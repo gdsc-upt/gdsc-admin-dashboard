@@ -1,4 +1,4 @@
-import { List } from "./types";
+import { List } from '../../models/types';
 
 export interface RegisterResponse {
   readonly id: string;
