@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from 'formik';
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { MenuItemRequest } from '../models/menu-item.request';
 import { addMenuItem } from '../menu-items.api';
 import { useRouting } from '../../routing';
@@ -35,17 +35,9 @@ export function AddMenuItem() {
                 placeholder="Enter menu item name"
                 onChange={handleChange}
               />
-              {/* <input */}
-              {/*  type="number" */}
-              {/*  name="type" */}
-              {/*  placeholder="Enter menu item type" */}
-              {/*  onChange={handleChange} */}
-              {/* /> */}
-              <Field name="type" as="select">
-                {Object.entries(MenuItemTypes).map(([type, verbose]) => (
-                  <option value={type}>{verbose}</option>
-                ))}
-              </Field>
+
+              {MenuItemTypeSelector(handleChange)}
+
               <input
                 type="string"
                 name="link"
@@ -58,5 +50,15 @@ export function AddMenuItem() {
         )}
       </Formik>
     </div>
+  );
+}
+
+function MenuItemTypeSelector(handleChange: (e: ChangeEvent) => void) {
+  return (
+    <Field onChange={handleChange} type="number" name="type" as="select">
+      {Object.entries(MenuItemTypes).map(([type, verbose]) => (
+        <option value={type}>{verbose}</option>
+      ))}
+    </Field>
   );
 }
