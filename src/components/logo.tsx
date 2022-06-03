@@ -5,10 +5,20 @@ const styles = {
   paddingRight: '3em',
 };
 
-export function Logo() {
+export interface LogoProps {
+  height?: string;
+  width?: string;
+}
+
+export function Logo({ height = '100%', width = '100%' }: LogoProps) {
   return (
     <div style={styles}>
-      <img src={require('../assets/images/gdsc-logo-and-text.png')} alt="GDSC logo" />
+      <img
+        height={height}
+        width={width}
+        src={require('../assets/images/gdsc-logo-and-text.png')}
+        alt="GDSC logo"
+      />
     </div>
   );
 }
