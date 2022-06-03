@@ -4,9 +4,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useTitle } from './hooks/general-hooks';
 import { Dashboard } from './pages/dashboard';
 import { Technologies } from './pages/technologies';
-import { ProtectedRoute } from './helpers/private-route';
+import { ProtectedRoute } from './auth/private-route';
 import { URLS } from './helpers/constants';
 import { AuthRoutes } from './auth/routes';
+import { MenuItemsRoutes } from './menu-items/routes';
 
 function App() {
   useTitle('Admin Dashboard GDSC');
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
       <Routes>
         {AuthRoutes()}
+        {MenuItemsRoutes()}
 
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Navigate to={URLS.dashboard} replace />} />

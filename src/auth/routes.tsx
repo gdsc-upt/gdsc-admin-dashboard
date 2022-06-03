@@ -1,11 +1,12 @@
 import { Route } from 'react-router-dom';
 import React from 'react';
-import { AUTH_URLS, URLS } from '../helpers/constants';
+import { URLS } from '../helpers/constants';
 import { LogoutPage } from './pages/logout';
-import { ProtectedRoute } from '../helpers/private-route';
-import authData from '../helpers/auth-data';
+import { ProtectedRoute } from './private-route';
+import authData from './helpers/auth-data';
 import { LoginPage } from './pages/login';
 import { RegisterPage } from './pages/register';
+import { AUTH_URLS } from './constants';
 
 export function AuthRoutes() {
   return [
