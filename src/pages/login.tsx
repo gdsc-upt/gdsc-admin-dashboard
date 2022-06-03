@@ -5,13 +5,7 @@ import { useRouting } from '../routing';
 import { login } from '../services/auth.service';
 import { LoginRequest } from '../models/login-request';
 import { AUTH_URLS, URLS } from '../helpers/constants';
-
-const styles = {
-  header: {
-    paddingLeft: '3em',
-    paddingRight: '3em',
-  },
-};
+import { Logo } from '../components/logo';
 
 const initialValues: LoginRequest = {
   username: 'admin',
@@ -32,15 +26,10 @@ export function LoginPage() {
 
   return (
     <div className="Login">
+      <Logo />
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {({ handleChange }) => (
           <div>
-            <div style={styles.header}>
-              <img
-                src={require('../assets/images/gdsc-logo-and-text.png').default}
-                alt="GDSC logo"
-              />
-            </div>
             <Form className="Form">
               <span className="title">Admin Dashboard</span>
               <input

@@ -5,13 +5,7 @@ import { useRouting } from '../routing';
 import { register } from '../services/auth.service';
 import { RegisterRequest } from '../models/register-request';
 import { AUTH_URLS } from '../helpers/constants';
-
-const styles = {
-  header: {
-    paddingLeft: '3em',
-    paddingRight: '3em',
-  },
-};
+import { Logo } from '../components/logo';
 
 const initialValues: RegisterRequest = {
   username: 'admin',
@@ -34,19 +28,12 @@ export function RegisterPage() {
     return routeTo(AUTH_URLS.login);
   };
 
-  // Formik will be used for all types of forms
-
   return (
     <div className="Login">
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {({ handleChange }) => (
           <div>
-            <div style={styles.header}>
-              <img
-                src={require('../assets/images/gdsc-logo-and-text.png').default}
-                alt="GDSC logo"
-              />
-            </div>
+            <Logo />
             <Form className="Form">
               <span className="title">Admin Dashboard Register</span>
               <input

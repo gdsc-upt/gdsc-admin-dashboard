@@ -9,6 +9,7 @@ import { ProtectedRoute } from './helpers/private-route';
 import { RegisterPage } from './pages/register';
 import { LogoutPage } from './pages/logout';
 import { AUTH_URLS, URLS } from './helpers/constants';
+import authData from './helpers/auth-data';
 
 function App() {
   useTitle('Admin Dashboard GDSC');
@@ -16,9 +17,14 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path={AUTH_URLS.login} element={<LoginPage />} />
         <Route path={AUTH_URLS.logout} element={<LogoutPage />} />
-        <Route path={AUTH_URLS.register} element={<RegisterPage />} />
+
+        <Route
+          element={<ProtectedRoute isAllowed={!authData.token} redirectPath={URLS.dashboard} />}
+        >
+          <Route path={AUTH_URLS.login} element={<LoginPage />} />
+          <Route path={AUTH_URLS.register} element={<RegisterPage />} />
+        </Route>
 
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Navigate to={URLS.dashboard} replace />} />
