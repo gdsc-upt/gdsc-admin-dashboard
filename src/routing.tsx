@@ -27,6 +27,6 @@ export function useRouting() {
 export function route(fn: () => string): string;
 export function route<T>(fn: (p: T) => string, params: Array<keyof T>): string;
 export function route<T>(fn: (p: T) => string, params: Array<keyof T> = []) {
-  const parameter = Object.fromEntries(params.map((p) => [p, `:${p}`]));
+  const parameter = Object.fromEntries(params.map((p) => [p, `:${String(p)}`]));
   return fn(parameter as any);
 }
