@@ -9,16 +9,17 @@ import { URLS } from './helpers/constants';
 import { AuthRoutes } from './auth/routes';
 import { MenuItemsRoutes } from './menu-items/routes';
 
-function App() {
+export default function App() {
   useTitle('Admin Dashboard GDSC');
 
   return (
     <div className="App">
       <Routes>
         {AuthRoutes()}
-        {MenuItemsRoutes()}
 
         <Route element={<ProtectedRoute />}>
+          {MenuItemsRoutes()}
+
           <Route path="/" element={<Navigate to={URLS.dashboard} replace />} />
           <Route path={URLS.technologies} element={<Technologies />} />
           <Route path={URLS.dashboard} element={<Dashboard />} />
@@ -27,5 +28,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
