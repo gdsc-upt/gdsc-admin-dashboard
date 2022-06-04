@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { logout } from '../services/auth.service';
-import { AUTH_URLS } from '../constants';
+import { logout } from '../services';
+import { AUTH_URLS } from '../helpers';
 
 export function LogoutPage() {
   logout();

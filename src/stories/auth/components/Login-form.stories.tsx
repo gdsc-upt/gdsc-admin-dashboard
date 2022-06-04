@@ -2,12 +2,12 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
-import { LoginPage } from '../auth/pages/login';
+import { LoginForm } from '../../../auth';
 
-const component = LoginPage;
+const component = LoginForm;
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Auth/Login',
+  title: 'Auth/Components/Login Form',
   component,
 } as ComponentMeta<typeof component>;
 
@@ -15,7 +15,7 @@ export default {
 // eslint-disable-next-line react/function-component-definition,react/jsx-props-no-spreading
 const Template: ComponentStory<typeof component> = () => (
   <BrowserRouter>
-    <LoginPage />
+    <LoginForm />
   </BrowserRouter>
 );
 

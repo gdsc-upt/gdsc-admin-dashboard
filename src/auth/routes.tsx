@@ -5,7 +5,7 @@ import { LogoutPage } from './pages/logout';
 import { ProtectedRoute } from './private-route';
 import { LoginPage } from './pages/login';
 import { RegisterPage } from './pages/register';
-import { AUTH_URLS } from './constants';
+import { AUTH_URLS } from './helpers/constants';
 import { isExpired } from './helpers/token-utils';
 
 export function AuthRoutes() {
