@@ -3,10 +3,10 @@ import React from 'react';
 import { URLS } from '../helpers/constants';
 import { LogoutPage } from './pages/logout';
 import { ProtectedRoute } from './private-route';
-import authData from './helpers/auth-data';
 import { LoginPage } from './pages/login';
 import { RegisterPage } from './pages/register';
 import { AUTH_URLS } from './constants';
+import { isExpired } from './helpers/token-utils';
 
 export function AuthRoutes() {
   return [
@@ -14,7 +14,7 @@ export function AuthRoutes() {
 
     <Route
       key="login/register"
-      element={<ProtectedRoute isAllowed={!authData.token} redirectPath={URLS.dashboard} />}
+      element={<ProtectedRoute isAllowed={isExpired()} redirectPath={URLS.dashboard} />}
     >
       <Route path={AUTH_URLS.login} element={<LoginPage />} />
       <Route path={AUTH_URLS.register} element={<RegisterPage />} />
