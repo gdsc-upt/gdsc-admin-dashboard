@@ -4,4 +4,5 @@ export interface Technology {
     description: string
     created: string
     updated: string
+    icon: string
 }

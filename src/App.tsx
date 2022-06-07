@@ -5,9 +5,9 @@ import { useTitle } from './hooks/general-hooks';
 import { AuthRoutes } from './features/auth/routes';
 import { ProtectedRoute } from './features/auth/private-route';
 import { URLS } from './helpers/constants';
-import { Technologies } from './features/technologies/technologies';
 import { Dashboard } from './features/dashboard/dashboard';
 import { MenuItemsRoutes } from './features/menu-items/routes';
+import { TechnologyRoutes } from './features/technologies/routes';
 import { BottomMenu } from './components/bottomMenu';
 
 export default function App() {
@@ -20,8 +20,8 @@ export default function App() {
 
         <Route element={<ProtectedRoute />}>
           {MenuItemsRoutes()}
+          {TechnologyRoutes()}
           <Route path="/" element={<Navigate to={URLS.dashboard} replace />} />
-          <Route path={URLS.technologies} element={<Technologies />} />
           <Route path={URLS.dashboard} element={<Dashboard />} />
         </Route>
       </Routes>

@@ -1,8 +1,17 @@
-import React from 'react';
-import { Technology } from '../../models/technology';
-import logo from '../../assets/images/Vector.png';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Technology } from '../models/technology';
+import logo from '../../../assets/images/Vector.png';
+import { useEffectAsync } from '../../../hooks/async-hooks';
+import { getTechnologies } from '../technologies-api';
+import { TECHNOLOGIES_URLS } from '../urls';
 
 export function Technologies() {
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
+  useEffectAsync(async () => {
+    console.log('Fetch Technologies');
+    setTechnologies(await getTechnologies());
+  });
   return (
     <>
       <p>Technologies</p>
@@ -32,30 +41,9 @@ export function Technologies() {
           ))}
         </tbody>
       </table>
+      <Link to={TECHNOLOGIES_URLS.addTechnology}>
+        <button type="button">Add technology</button>
+      </Link>
     </>
   );
 }
-
-const technologies: Technology[] = [
-  {
-    id: '1',
-    name: 'react',
-    description: 'description',
-    created: 'today',
-    updated: Date.now().toString(),
-  },
-  {
-    id: '2',
-    name: 'css',
-    description: 'no description',
-    created: 'yesterday',
-    updated: Date.now().toString(),
-  },
-  {
-    id: '3',
-    name: 'json',
-    description: 'asndbfgr',
-    created: 'today',
-    updated: Date.now().toString(),
-  },
-];
