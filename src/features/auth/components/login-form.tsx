@@ -1,10 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import React from 'react';
-import { useRouting } from '../../routing';
+import { useRouting } from '../../../routing';
 import { LoginRequest } from '../models';
 import { login } from '../services';
-import { URLS } from '../../helpers/constants';
+import { URLS } from '../../../helpers/constants';
 import { AUTH_URLS } from '../helpers/constants';
 
 const initialValues: LoginRequest = {
@@ -18,6 +18,7 @@ export function LoginForm() {
   const tryLogin = async ({ password, username }: LoginRequest) => {
     const response = await login(username, password);
     if (response) {
+      console.log('go to dashboard');
       return routeTo(URLS.dashboard);
     }
 

@@ -1,8 +1,8 @@
 import authData from './auth-data';
-import { isNotExpired } from './token-utils';
+import { tokenNotExpired } from './token-utils';
 
 export function authHeader(): Record<string, string> {
-  if (isNotExpired()) {
+  if (tokenNotExpired()) {
     return { Authorization: `Bearer ${authData.token}` };
   }
 

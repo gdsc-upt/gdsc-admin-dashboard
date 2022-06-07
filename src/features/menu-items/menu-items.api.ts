@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { API_URL } from '../helpers/constants';
+import { API_URL } from '../../helpers/constants';
 import { MenuItem } from './models/menu-item';
 import { MenuItemRequest } from './models/menu-item.request';
 import { authHeader } from '../auth/helpers/auth-header';

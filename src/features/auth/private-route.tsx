@@ -1,7 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import React, { ReactElement } from 'react';
-import authData from './helpers/auth-data';
-import { isNotExpired } from './helpers/token-utils';
+import { tokenNotExpired } from './helpers/token-utils';
 
 export interface ProtectedRouteProps {
   readonly isAllowed?: boolean;
@@ -9,13 +8,13 @@ export interface ProtectedRouteProps {
   readonly children?: ReactElement;
 }
 
-console.log(authData);
-
 export function ProtectedRoute({
-  isAllowed = isNotExpired(),
+  isAllowed = tokenNotExpired(),
   redirectPath = '/login',
   children = undefined,
 }: ProtectedRouteProps): ReactElement {
+  console.log(isAllowed);
+  console.log(redirectPath);
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace />;
   }

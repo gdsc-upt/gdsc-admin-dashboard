@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
-import { LoginPage } from '../../auth/pages/login';
+import { LoginPage } from '../../features/auth/pages/login';
 
 const component = LoginPage;
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

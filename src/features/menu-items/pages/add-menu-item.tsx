@@ -2,7 +2,7 @@ import { Field, Form, Formik } from 'formik';
 import React, { ChangeEvent } from 'react';
 import { MenuItemRequest } from '../models/menu-item.request';
 import { addMenuItem } from '../menu-items.api';
-import { useRouting } from '../../routing';
+import { useRouting } from '../../../routing';
 import { MENU_ITEMS_URLS } from '../urls';
 import { authHeader } from '../../auth/helpers/auth-header';
 import { MenuItemTypes } from '../models/menu-item-types';

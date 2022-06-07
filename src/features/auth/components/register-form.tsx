@@ -2,7 +2,7 @@ import { Field, Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { RegisterRequest } from '../models';
-import { useRouting } from '../../routing';
+import { useRouting } from '../../../routing';
 import { register } from '../services';
 import { AUTH_URLS } from '../helpers';
 
