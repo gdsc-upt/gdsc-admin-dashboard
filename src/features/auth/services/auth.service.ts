@@ -17,6 +17,7 @@ export async function login(username: string, password: string) {
 export function logout() {
   console.log('logout');
   localStorage.removeItem(AUTH_DATA_KEY);
+  window.location.reload();
 }
 
 export async function register(username: string, email: string, password: string) {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 import { useEffectAsync } from '../../../hooks/async-hooks';
 import { getMenuItems } from '../menu-items.api';
 import { MenuItem } from '../models/menu-item';
@@ -23,7 +24,7 @@ export function MenuItems() {
       ))}
 
       <Link to={MENU_ITEMS_URLS.addMenuItem}>
-        <button type="button">Add menu item</button>
+        <Button type="button">Add menu item</Button>
       </Link>
     </div>
   );

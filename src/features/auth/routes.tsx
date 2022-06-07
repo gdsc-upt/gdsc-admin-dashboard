@@ -1,7 +1,6 @@
 import { Route } from 'react-router-dom';
 import React from 'react';
 import { URLS } from '../../helpers/constants';
-import { LogoutPage } from './pages/logout';
 import { ProtectedRoute } from './private-route';
 import { LoginPage } from './pages/login';
 import { RegisterPage } from './pages/register';
@@ -11,8 +10,6 @@ import { tokenExpired } from './helpers/token-utils';
 export function AuthRoutes() {
   console.log(tokenExpired());
   return [
-    <Route key={AUTH_URLS.logout} path={AUTH_URLS.logout} element={<LogoutPage />} />,
-
     <Route
       key="login/register"
       element={<ProtectedRoute isAllowed={tokenExpired()} redirectPath={URLS.dashboard} />}

@@ -13,8 +13,6 @@ export function ProtectedRoute({
   redirectPath = '/login',
   children = undefined,
 }: ProtectedRouteProps): ReactElement {
-  console.log(isAllowed);
-  console.log(redirectPath);
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace />;
   }
