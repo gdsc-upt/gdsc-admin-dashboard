@@ -8,6 +8,7 @@ import { URLS } from './helpers/constants';
 import { Technologies } from './features/technologies/technologies';
 import { Dashboard } from './features/dashboard/dashboard';
 import { MenuItemsRoutes } from './features/menu-items/routes';
+import { BottomMenu } from './components/bottomMenu';
 
 export default function App() {
   useTitle('Admin Dashboard GDSC');
@@ -24,6 +25,8 @@ export default function App() {
           <Route path={URLS.dashboard} element={<Dashboard />} />
         </Route>
       </Routes>
+
+      <BottomMenu />
     </div>
   );
 }
