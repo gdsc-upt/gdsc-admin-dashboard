@@ -1,0 +1,28 @@
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  @extend .flex;
+  flex-direction: column;
+}
+
+.h-40 {
+  height: 40px;
+}
+
+.pt-2 {
+  padding-top: 1.5em;
+}
+
+.pb-2 {
+  padding-bottom: 1.5em;
+}
+
+.mt-2 {
+  margin-top: 1.5em;
+}
+
+.mb-2 {
+  margin-bottom: 1.5em;
+}

@@ -1,11 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
-import React from 'react';
-import { useRouting } from '../../../routing';
+import React, { useState } from 'react';
+import { Alert } from '@mui/material';
+import { AxiosError } from 'axios';
 import { LoginRequest } from '../models';
+import { useRouting } from '../../../routing';
 import { login } from '../services';
 import { URLS } from '../../../helpers/constants';
-import { AUTH_URLS } from '../helpers/constants';
 
 const initialValues: LoginRequest = {
   username: 'admin',
@@ -14,23 +15,38 @@ const initialValues: LoginRequest = {
 
 export function LoginForm() {
   const { routeTo } = useRouting();
+  const [error, setError] = useState<string | undefined>(undefined);
+
+  const handleError = (apiError: AxiosError) => {
+    if (apiError.status === 401) {
+      return setError('Invalid username or password');
+    }
+
+    return setError('Something went wrong :(');
+  };
 
   const tryLogin = async ({ password, username }: LoginRequest) => {
-    const response = await login(username, password);
-    if (response) {
-      console.log('go to dashboard');
+    const response = await login(username, password).catch(handleError);
+    console.log(response);
+    if (response?.status === 200) {
       return routeTo(URLS.dashboard);
     }
 
-    return routeTo(AUTH_URLS.login);
+    return Promise.reject();
   };
 
   return (
     <Formik initialValues={initialValues} onSubmit={tryLogin}>
       {({ isSubmitting }) => (
         <div>
-          <Form className="Form">
-            <span className="title">Admin Dashboard</span>
+          <Form className="Form flex-column">
+            <span className="title pb-2">Admin Dashboard</span>
+
+            {error ? (
+              <Alert sx={{ height: '100%' }} className="mb-2" severity="error">
+                {error}
+              </Alert>
+            ) : null}
 
             <Field type="text" name="username" placeholder="Enter your email or username" />
             <ErrorMessage name="username" component="div" />
@@ -38,11 +54,11 @@ export function LoginForm() {
             <Field type="password" name="password" placeholder="Enter your password" />
             <ErrorMessage name="password" component="div" />
 
-            <button disabled={isSubmitting} type="submit">
+            <button className="mt-2" disabled={isSubmitting} type="submit">
               LOGIN
             </button>
 
-            <span>
+            <span className="pt-2">
               No account? <Link to="/register">Register</Link>
             </span>
           </Form>

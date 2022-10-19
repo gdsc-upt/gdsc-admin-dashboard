@@ -1,4 +1,4 @@
-export interface TechnologyResponse{
+export interface TechnologyResponse {
   readonly name: string;
   readonly description: string;
   readonly icon: string;

@@ -4,10 +4,10 @@
     "plugin:react/recommended",
     "react-app",
     "airbnb",
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
+    "airbnb/hooks",
+    "plugin:prettier/recommended",
+    "eslint-config-prettier",
+    "react-app/jest"
   ],
   "rules": {
     "import/extensions": "off",
@@ -16,6 +16,7 @@
     "react/jsx-filename-extension": "off",
     "react/require-default-props": "off",
     "no-redeclare": "off",
+    "no-console": "off",
     "no-underscore-dangle": "off",
     "no-unused-vars": "off",
     "no-use-before-define": "off",
@@ -23,5 +24,15 @@
       "error"
     ],
     "global-require": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.stories.*"
+      ],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    }
+  ]
 }

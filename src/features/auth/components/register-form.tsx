@@ -17,10 +17,7 @@ export function RegisterForm() {
 
   const onSubmit = async ({ username, email, password }: RegisterRequest) => {
     const response = await register(username, email, password);
-    // if (response) {
-    //   return routeTo(urls.dashboard);
-    // }
-    if (!response) {
+    if (!response.data) {
       console.error('Error');
     }
 

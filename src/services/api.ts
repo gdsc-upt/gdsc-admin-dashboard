@@ -15,11 +15,9 @@ export function get<Response>(url: string) {
 }
 
 export function post<Response>(url: string, payload: unknown) {
-  return api
-    .post<Response>(`${url}`, payload, {
-      headers: { Authorization: `Bearer ${authData.token}` },
-    })
-    .then(response => response.data);
+  return api.post<Response>(`${url}`, payload, {
+    headers: { Authorization: `Bearer ${authData.token}` },
+  });
 }
 
 export function patch<Response>(url: string, payload: unknown) {

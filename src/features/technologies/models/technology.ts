@@ -1,8 +1,8 @@
 export interface Technology {
-    id: string
-    name: string
-    description: string
-    created: string
-    updated: string
-    icon: string
+  id: string;
+  name: string;
+  description: string;
+  created: string;
+  updated: string;
+  icon: string;
 }

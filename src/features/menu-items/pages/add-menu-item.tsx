@@ -4,7 +4,6 @@ import { MenuItemRequest } from '../models/menu-item.request';
 import { addMenuItem } from '../menu-items.api';
 import { useRouting } from '../../../routing';
 import { MENU_ITEMS_URLS } from '../urls';
-import { authHeader } from '../../auth/helpers/auth-header';
 import { MenuItemTypes } from '../models/menu-item-types';
 
 const initialValues: MenuItemRequest = {
@@ -15,7 +14,6 @@ const initialValues: MenuItemRequest = {
 
 export function AddMenuItem() {
   const { routeTo } = useRouting();
-  console.log(authHeader());
 
   const onSubmit = async (menuItem: MenuItemRequest) => {
     await addMenuItem(menuItem);

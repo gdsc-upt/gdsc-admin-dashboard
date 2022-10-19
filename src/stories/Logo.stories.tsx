@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {Logo} from '../components/logo';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Logo } from '../components/logo';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
