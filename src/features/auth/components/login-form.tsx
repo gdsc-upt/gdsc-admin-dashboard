@@ -1,10 +1,9 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 import React, { useState } from 'react';
-import { Alert } from '@mui/material';
+import { Alert, CircularProgress } from '@mui/material';
 import { AxiosError } from 'axios';
 import { LoginRequest } from '../models';
-import { useRouting } from '../../../routing';
 import { login } from '../services';
 import { URLS } from '../../../helpers/constants';
 
@@ -14,11 +13,11 @@ const initialValues: LoginRequest = {
 };
 
 export function LoginForm() {
-  const { routeTo } = useRouting();
   const [error, setError] = useState<string | undefined>(undefined);
 
   const handleError = (apiError: AxiosError) => {
-    if (apiError.status === 401) {
+    console.log(apiError);
+    if (apiError.response?.status === 401) {
       return setError('Invalid username or password');
     }
 
@@ -29,7 +28,7 @@ export function LoginForm() {
     const response = await login(username, password).catch(handleError);
     console.log(response);
     if (response?.status === 200) {
-      return routeTo(URLS.dashboard);
+      return redirect(URLS.dashboard);
     }
 
     return Promise.reject();
@@ -55,7 +54,7 @@ export function LoginForm() {
             <ErrorMessage name="password" component="div" />
 
             <button className="mt-2" disabled={isSubmitting} type="submit">
-              LOGIN
+              {isSubmitting ? <CircularProgress /> : 'LOGIN'}
             </button>
 
             <span className="pt-2">
