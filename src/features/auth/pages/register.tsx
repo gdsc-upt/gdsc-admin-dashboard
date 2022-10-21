@@ -1,6 +1,6 @@
-import React from 'react';
-import { Logo } from '../../../components/logo';
-import { RegisterForm } from '../components';
+import React from "react";
+import { Logo } from "../../../components/logo";
+import { RegisterForm } from "../components";
 
 export function RegisterPage() {
   return (

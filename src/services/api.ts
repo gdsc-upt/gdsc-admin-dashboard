@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { API_URL } from '../helpers/constants';
-import authData from '../features/auth/helpers/auth-data';
+import axios from "axios";
+import { API_URL } from "../helpers/constants";
+import authData from "../features/auth/helpers/auth-data";
 
 export const api = axios.create({
   baseURL: API_URL,
   headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
+    "Content-Type": "application/json",
+    Accept: "application/json",
   },
 });
 

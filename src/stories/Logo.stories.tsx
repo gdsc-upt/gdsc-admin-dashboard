@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Logo } from '../components/logo';
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Logo } from "../components/logo";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'GDSC/Logo',
+  title: "GDSC/Logo",
   component: Logo,
 } as ComponentMeta<typeof Logo>;
 
@@ -19,12 +19,12 @@ Primary.args = {};
 
 export const Large = Template.bind({});
 Large.args = {
-  height: '100%',
-  width: '100%',
+  height: "100%",
+  width: "100%",
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  height: '30%',
-  width: '30%',
+  height: "30%",
+  width: "30%",
 };

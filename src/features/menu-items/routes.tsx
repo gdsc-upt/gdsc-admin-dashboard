@@ -1,8 +1,8 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import { MENU_ITEMS_URLS } from './urls';
-import { MenuItems } from './pages/menu-items';
-import { AddMenuItem } from './pages/add-menu-item';
+import React from "react";
+import { Route } from "react-router-dom";
+import { MENU_ITEMS_URLS } from "./urls";
+import { MenuItems } from "./pages/menu-items";
+import { AddMenuItem } from "./pages/add-menu-item";
 
 export function MenuItemsRoutes() {
   return [

@@ -1,35 +1,48 @@
-import { Field, Form, Formik } from 'formik';
-import { Link } from 'react-router-dom';
-import React from 'react';
-import { RegisterRequest } from '../models';
-import { useRouting } from '../../../routing';
-import { register } from '../services';
-import { AUTH_URLS } from '../helpers';
+import { Field, Form, Formik } from "formik";
+import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { AxiosError } from "axios";
+import { Alert } from "@mui/material";
+import { RegisterRequest } from "../models";
+import { useRouting } from "../../../routing";
+import { useAuth } from "../services/auth-context";
+import { AUTH_URLS } from "../routes";
 
 const initialValues: RegisterRequest = {
-  username: 'admin',
-  email: 'admin@example.com',
-  password: 'admin',
+  username: "admin",
+  email: "admin@example.com",
+  password: "admin",
 };
 
 export function RegisterForm() {
+  const [error, setError] = useState<string | undefined>(undefined);
   const { routeTo } = useRouting();
+  const auth = useAuth();
 
-  const onSubmit = async ({ username, email, password }: RegisterRequest) => {
-    const response = await register(username, email, password);
-    if (!response.data) {
-      console.error('Error');
+  const handleError = (apiError: AxiosError) => {
+    if (apiError.response?.status === 401) {
+      return setError("Invalid username or password");
     }
 
-    return routeTo(AUTH_URLS.login);
+    return setError("Something went wrong :(");
+  };
+
+  const tryRegister = async (registerRequest: RegisterRequest) => {
+    auth.signUp(registerRequest, () => routeTo(AUTH_URLS.login), handleError);
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik initialValues={initialValues} onSubmit={tryRegister}>
       {({ isSubmitting }) => (
         <div>
           <Form className="Form">
             <span className="title">Admin Dashboard Register</span>
+
+            {error ? (
+              <Alert sx={{ height: "100%" }} className="mb-2" severity="error">
+                {error}
+              </Alert>
+            ) : null}
 
             <Field type="text" name="username" placeholder="Enter your username" />
 
@@ -42,7 +55,9 @@ export function RegisterForm() {
             </button>
 
             <span>
-              Already have an account? <Link to="/login">Log in</Link>
+              Already have an account?
+              {" "}
+              <Link to="/login">Log in</Link>
             </span>
           </Form>
         </div>

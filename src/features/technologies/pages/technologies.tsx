@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Technology } from '../models/technology';
-import logo from '../../../assets/images/Vector.png';
-import { useEffectAsync } from '../../../hooks/async-hooks';
-import { getTechnologies } from '../technologies-api';
-import { TECHNOLOGIES_URLS } from '../urls';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Technology } from "../models/technology";
+import logo from "../../../assets/images/Vector.png";
+import { useEffectAsync } from "../../../hooks/async-hooks";
+import { getTechnologies } from "../technologies-api";
+import { TECHNOLOGIES_URLS } from "../urls";
 
 export function Technologies() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
   useEffectAsync(async () => {
-    console.log('Fetch Technologies');
+    console.log("Fetch Technologies");
     setTechnologies(await getTechnologies());
   });
   return (

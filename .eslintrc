@@ -5,8 +5,6 @@
     "react-app",
     "airbnb",
     "airbnb/hooks",
-    "plugin:prettier/recommended",
-    "eslint-config-prettier",
     "react-app/jest"
   ],
   "rules": {
@@ -20,10 +18,25 @@
     "no-underscore-dangle": "off",
     "no-unused-vars": "off",
     "no-use-before-define": "off",
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
     "@typescript-eslint/no-use-before-define": [
       "error"
     ],
-    "global-require": "off"
+    "global-require": "off",
+    "quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": false
+      }
+    ]
+  },
+  "globals": {
+    "JSX": "readonly"
   },
   "overrides": [
     {

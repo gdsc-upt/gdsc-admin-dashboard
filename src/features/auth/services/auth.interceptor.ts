@@ -1,7 +1,7 @@
-import { api } from '../../../services/api';
-import { AUTH_URLS, authHeader, tokenNotExpired } from '../helpers';
-import { useRouting } from '../../../routing';
-import { logout } from './auth.service';
+import { api } from "../../../services/api";
+import { authHeader, tokenNotExpired } from "../helpers";
+import { useRouting } from "../../../routing";
+import { AUTH_URLS } from "../routes";
 
 api.interceptors.request.use(
   request => {
@@ -18,10 +18,10 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   response => response,
   error => {
-    console.log('error: ', error);
+    console.log("error: ", error);
 
     if (error.response.status === 401) {
-      logout();
+      // logout();
       const { routeTo } = useRouting();
       return routeTo(AUTH_URLS.login);
     }

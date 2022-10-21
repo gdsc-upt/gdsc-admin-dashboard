@@ -1,15 +1,15 @@
-import { Field, Form, Formik } from 'formik';
-import React, { ChangeEvent } from 'react';
-import { MenuItemRequest } from '../models/menu-item.request';
-import { addMenuItem } from '../menu-items.api';
-import { useRouting } from '../../../routing';
-import { MENU_ITEMS_URLS } from '../urls';
-import { MenuItemTypes } from '../models/menu-item-types';
+import { Field, Form, Formik } from "formik";
+import React, { ChangeEvent } from "react";
+import { MenuItemRequest } from "../models/menu-item.request";
+import { addMenuItem } from "../menu-items.api";
+import { useRouting } from "../../../routing";
+import { MENU_ITEMS_URLS } from "../urls";
+import { MenuItemTypes } from "../models/menu-item-types";
 
 const initialValues: MenuItemRequest = {
-  name: '',
+  name: "",
   type: 0,
-  link: '',
+  link: "",
 };
 
 export function AddMenuItem() {

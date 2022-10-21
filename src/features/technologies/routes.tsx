@@ -1,8 +1,8 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import { TECHNOLOGIES_URLS } from './urls';
-import { Technologies } from './pages/technologies';
-import { AddTechnology } from './pages/add-technology';
+import React from "react";
+import { Route } from "react-router-dom";
+import { TECHNOLOGIES_URLS } from "./urls";
+import { Technologies } from "./pages/technologies";
+import { AddTechnology } from "./pages/add-technology";
 
 export function TechnologyRoutes() {
   return [

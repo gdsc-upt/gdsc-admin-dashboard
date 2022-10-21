@@ -1,21 +1,37 @@
-import { Route } from 'react-router-dom';
-import React from 'react';
-import { URLS } from '../../helpers/constants';
-import { ProtectedRoute } from './private-route';
-import { LoginPage } from './pages/login';
-import { RegisterPage } from './pages/register';
-import { AUTH_URLS } from './helpers/constants';
-import { tokenExpired } from './helpers/token-utils';
+import { RouteObject } from "react-router-dom";
+import React from "react";
+import { LoginPage } from "./pages/login";
+import { RegisterPage } from "./pages/register";
+import { IfNotLoggedIn } from "./services/auth-context";
+import { LogoutPage } from "./pages/logout";
 
-export function AuthRoutes() {
-  console.log(tokenExpired());
+export const AUTH_URLS = {
+  login: "/login",
+  register: "/register",
+  logout: "/logout",
+} as const;
+
+export function AuthRoutes(loggedInRedirect = ""): RouteObject[] {
   return [
-    <Route
-      key="login/register"
-      element={<ProtectedRoute isAllowed={tokenExpired()} redirectPath={URLS.dashboard} />}
-    >
-      <Route path={AUTH_URLS.login} element={<LoginPage />} />
-      <Route path={AUTH_URLS.register} element={<RegisterPage />} />
-    </Route>,
+    {
+      path: AUTH_URLS.login,
+      element: (
+        <IfNotLoggedIn redirectTo={loggedInRedirect}>
+          <LoginPage />
+        </IfNotLoggedIn>
+      ),
+    },
+    {
+      path: AUTH_URLS.register,
+      element: (
+        <IfNotLoggedIn redirectTo={loggedInRedirect}>
+          <RegisterPage />
+        </IfNotLoggedIn>
+      ),
+    },
+    {
+      path: AUTH_URLS.logout,
+      element: <LogoutPage />,
+    },
   ];
 }

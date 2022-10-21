@@ -1,6 +1,6 @@
 export const MenuItemTypes = {
-  0: 'Internal link',
-  1: 'External link',
+  0: "Internal link",
+  1: "External link",
 } as const;
 
 export type MenuItemType = keyof typeof MenuItemTypes;

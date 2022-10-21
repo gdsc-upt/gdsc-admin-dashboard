@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import { Button } from './Button';
-import './header.css';
+import { Button } from "./Button";
+import "./header.css";
 
 type User = {
   name: string;
@@ -14,7 +14,9 @@ interface HeaderProps {
   onCreateAccount: () => void;
 }
 
-export function Header({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) {
+export function Header({
+  user, onLogin, onLogout, onCreateAccount,
+}: HeaderProps) {
   return (
     <header>
       <div className="wrapper">
@@ -41,7 +43,10 @@ export function Header({ user, onLogin, onLogout, onCreateAccount }: HeaderProps
           {user ? (
             <>
               <span className="welcome">
-                Welcome, <b>{user.name}</b>!
+                Welcome,
+                {" "}
+                <b>{user.name}</b>
+                !
               </span>
               <Button size="small" onClick={onLogout} label="Log out" />
             </>

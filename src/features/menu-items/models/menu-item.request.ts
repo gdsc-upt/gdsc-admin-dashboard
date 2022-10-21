@@ -1,4 +1,4 @@
-import { MenuItemType } from './menu-item-types';
+import { MenuItemType } from "./menu-item-types";
 
 export interface MenuItemRequest {
   readonly name: string;

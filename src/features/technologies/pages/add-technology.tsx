@@ -1,17 +1,17 @@
-import { Form, Formik } from 'formik';
-import React from 'react';
-import { Technology } from '../models/technology';
-import { useRouting } from '../../../routing';
-import { TECHNOLOGIES_URLS } from '../urls';
-import { addTechnology } from '../technologies-api';
+import { Form, Formik } from "formik";
+import React from "react";
+import { Technology } from "../models/technology";
+import { useRouting } from "../../../routing";
+import { TECHNOLOGIES_URLS } from "../urls";
+import { addTechnology } from "../technologies-api";
 
 const initialValues: Technology = {
-  id: '',
-  name: '',
-  description: '',
-  icon: '',
-  created: '',
-  updated: '',
+  id: "",
+  name: "",
+  description: "",
+  icon: "",
+  created: "",
+  updated: "",
 };
 
 export function AddTechnology() {

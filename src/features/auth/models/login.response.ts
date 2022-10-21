@@ -1,4 +1,4 @@
 export interface LoginResponse {
-  token: string;
-  expiration: string;
+  readonly token: string;
+  readonly expiration: string;
 }
