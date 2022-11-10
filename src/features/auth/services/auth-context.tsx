@@ -59,7 +59,6 @@ export function IfNotLoggedIn({
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  console.log("auth provider");
   const [user, setUser] = useState<LoginResponse | undefined>(authData);
 
   const signIn = (data: LoginRequest, callback: VoidFn, onError?: (error: AxiosError) => void) => {
@@ -73,11 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return login.catch(error => onError?.(error));
   };
 
-  const signUp = (
-    data: RegisterRequest,
-    callback: VoidFn,
-    onError?: (error: AxiosError) => void,
-  ) => post<RegisterResponse>("auth/register", data)
+  const signUp = (data: RegisterRequest, callback: VoidFn, onError?: (error: AxiosError) => void) => post<RegisterResponse>("auth/register", data)
     .then(response => {
       console.log("register response", response);
       setTimeout(() => callback());
@@ -85,22 +80,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     })
     .catch(error => onError?.(error));
 
-  const signOut = (callback: VoidFn = () => {
-  }) => {
+  const signOut = (callback: VoidFn = () => {}) => {
     console.log("logout");
     localStorage.removeItem(AUTH_DATA_KEY);
     setUser(undefined);
-    setTimeout(() => {
-      callback();
-    });
+    setTimeout(() => callback());
   };
 
-  const value = useMemo(() => {
-    console.log("use memo", user);
-    return {
-      user, signIn, signUp, signOut,
-    };
-  }, [user]);
+  const value = useMemo(
+    () => ({
+      user,
+      signIn,
+      signUp,
+      signOut,
+    }),
+    [user],
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

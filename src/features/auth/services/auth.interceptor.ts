@@ -18,12 +18,11 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   response => response,
   error => {
-    console.log("error: ", error);
+    console.log("interceptor error: ", error);
 
     if (error.response.status === 401) {
-      // logout();
       const { routeTo } = useRouting();
-      return routeTo(AUTH_URLS.login);
+      return routeTo(AUTH_URLS.logout);
     }
 
     return Promise.reject(error);

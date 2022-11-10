@@ -1,24 +1,20 @@
-import { useState } from "react";
-import { useEffectAsync } from "./async-hooks";
+import { useEffect, useState } from "react";
+import { AxiosError, AxiosResponse } from "axios";
 
-export function useData<T>(dataLoader: (args?: unknown) => Promise<T>, param?: unknown, deps = []) {
-  const [data, setData] = useState<T>();
-  const [error, setError] = useState<string>();
+export function useData<Res, Req>(dataLoader: Promise<AxiosResponse<Res, Req>>) {
+  const [data, setData] = useState<Res>();
+  const [error, setError] = useState<AxiosError<Req, Res>>();
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffectAsync(async () => {
-    try {
-      setIsLoading(true);
-      const newData = await dataLoader(param);
-      setData(newData);
-      setError(undefined);
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log(e);
-    } finally {
-      setIsLoading(false);
-    }
-  }, deps);
+  useEffect(() => {
+    dataLoader
+      .then(response => {
+        setData(response.data);
+        setError(undefined);
+      })
+      .catch(setError)
+      .finally(() => setIsLoading(false));
+  }, [dataLoader]);
 
   return {
     data,
