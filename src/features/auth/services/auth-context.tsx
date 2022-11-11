@@ -31,7 +31,7 @@ export function IfLoggedIn({ children }: { children: JSX.Element }) {
   const location = useLocation();
 
   console.log("require auth", auth);
-  if (!auth.user?.token) {
+  if (!auth.user?.token || new Date(auth.user?.expiration ?? "").getTime() < Date.now()) {
     console.log("go to login");
     return <Navigate to={AUTH_URLS.login} state={{ from: location }} replace />;
   }
@@ -62,6 +62,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signIn = (data: LoginRequest, callback: VoidFn, onError?: (error: AxiosError) => void) => {
     const login = post<LoginResponse>("auth/login", data).then(response => {
+      console.log("login response", response);
       localStorage.setItem(AUTH_DATA_KEY, JSON.stringify(response.data));
       setUser(response.data);
       setTimeout(() => callback());

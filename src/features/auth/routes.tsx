@@ -11,7 +11,7 @@ export const AUTH_URLS = {
   logout: "/logout",
 } as const;
 
-export function AuthRoutes(loggedInRedirect = ""): RouteObject[] {
+export function AuthRoutes(loggedInRedirect = "/"): RouteObject[] {
   return [
     {
       path: AUTH_URLS.login,

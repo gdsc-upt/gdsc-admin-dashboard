@@ -41,6 +41,10 @@ const router = createBrowserRouter([
           },
           ...TechnologyRoutes(),
           {
+            path: "*",
+            element: <Navigate to={URLS.dashboard} />,
+          },
+          {
             path: "/",
             element: <Navigate to={URLS.dashboard} />,
           },
