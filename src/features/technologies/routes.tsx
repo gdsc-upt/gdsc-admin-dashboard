@@ -1,20 +1,27 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { RouteObject } from "react-router-dom";
 import { TECHNOLOGIES_URLS } from "./urls";
+import { IfLoggedIn } from "../auth/services/auth-context";
 import { Technologies } from "./pages/technologies";
 import { AddTechnology } from "./pages/add-technology";
 
-export function TechnologyRoutes() {
+export function TechnologyRoutes(): RouteObject[] {
   return [
-    <Route
-      key={TECHNOLOGIES_URLS.technologies}
-      path={TECHNOLOGIES_URLS.technologies}
-      element={<Technologies />}
-    />,
-    <Route
-      key={TECHNOLOGIES_URLS.addTechnology}
-      path={TECHNOLOGIES_URLS.addTechnology}
-      element={<AddTechnology />}
-    />,
+    {
+      path: TECHNOLOGIES_URLS.technologies,
+      element: (
+        <IfLoggedIn>
+          <Technologies />
+        </IfLoggedIn>
+      ),
+    },
+    {
+      path: TECHNOLOGIES_URLS.addTechnology,
+      element: (
+        <IfLoggedIn>
+          <AddTechnology />
+        </IfLoggedIn>
+      ),
+    },
   ];
 }

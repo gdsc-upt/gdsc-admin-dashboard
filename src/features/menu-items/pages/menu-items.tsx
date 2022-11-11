@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import { useEffectAsync } from "../../../hooks/async-hooks";
 import { getMenuItems } from "../menu-items.api";
 import { MenuItem } from "../models/menu-item";
 import { MENU_ITEMS_URLS } from "../urls";
@@ -9,10 +8,10 @@ import { MENU_ITEMS_URLS } from "../urls";
 export function MenuItems() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
 
-  useEffectAsync(async () => {
+  useEffect(() => {
     console.log("Fetch MenuItems");
-    setMenuItems(await getMenuItems());
-  });
+    getMenuItems().then(setMenuItems);
+  }, []);
 
   return (
     <div>

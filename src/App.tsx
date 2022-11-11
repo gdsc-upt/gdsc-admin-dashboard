@@ -9,6 +9,7 @@ import { Dashboard } from "./features/dashboard/dashboard";
 import { AuthProvider, IfLoggedIn } from "./features/auth/services/auth-context";
 import { AuthRoutes } from "./features/auth";
 import { BottomMenu } from "./components/bottomMenu";
+import { TechnologyRoutes } from "./features/technologies/routes";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
               </IfLoggedIn>
             ),
           },
+          ...TechnologyRoutes(),
           {
             path: "/",
             element: <Navigate to={URLS.dashboard} />,
@@ -51,22 +53,6 @@ const router = createBrowserRouter([
 export default function App() {
   useTitle("Admin Dashboard GDSC");
 
-  // return (
-  //   <div className="App">
-  //     <Routes>
-  //       {AuthRoutes()}
-  //
-  //       <Route element={<ProtectedRoute />}>
-  //         {MenuItemsRoutes()}
-  //         {TechnologyRoutes()}
-  //         <Route path="/" element={<Navigate to={URLS.dashboard} replace />} />
-  //         <Route path={URLS.dashboard} element={<Dashboard />} />
-  //       </Route>
-  //     </Routes>
-  //
-  //     <BottomMenu />
-  //   </div>
-  // );
   return (
     <div className="App">
       <RouterProvider router={router} />

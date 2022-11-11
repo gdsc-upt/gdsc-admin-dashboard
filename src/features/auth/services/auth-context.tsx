@@ -39,13 +39,12 @@ export function IfLoggedIn({ children }: { children: JSX.Element }) {
   return children;
 }
 
-export function IfNotLoggedIn({
-  children,
-  redirectTo,
-}: {
-  children: JSX.Element;
-  redirectTo?: string;
-}) {
+export interface IfNotLoggedInProps {
+  readonly children: JSX.Element;
+  readonly redirectTo?: string;
+}
+
+export function IfNotLoggedIn({ children, redirectTo }: IfNotLoggedInProps) {
   const auth = useAuth();
   const location = useLocation();
 
