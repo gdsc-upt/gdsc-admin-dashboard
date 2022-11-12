@@ -15,6 +15,7 @@ export function Technologies() {
 
   const onDeleteSubmit = async (technologyId: string) => {
     await deleteTechnology(technologyId);
+    getTechnologies().then(setTechnologies);
   };
 
   return (
