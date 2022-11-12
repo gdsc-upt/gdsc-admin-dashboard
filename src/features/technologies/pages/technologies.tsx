@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Technology } from "../models/technology";
 import logo from "../../../assets/images/Vector.png";
-import { getTechnologies } from "../technologies-api";
+import { deleteTechnology, getTechnologies } from "../technologies-api";
 import { TECHNOLOGIES_URLS } from "../urls";
 
 export function Technologies() {
@@ -12,6 +12,10 @@ export function Technologies() {
     console.log("Fetch Technologies");
     getTechnologies().then(setTechnologies);
   }, []);
+
+  const onDeleteSubmit = async (technologyId: string) => {
+    await deleteTechnology(technologyId);
+  };
 
   return (
     <>
@@ -32,12 +36,16 @@ export function Technologies() {
             <tr key={t.id}>
               <td>
                 <img src={logo} alt="user img" />
-                {t.id}
               </td>
               <td>{t.name}</td>
               <td>{t.description}</td>
-              <td>{t.created}</td>
-              <td>{t.updated}</td>
+              <td>{new Date(t.created).toLocaleString()}</td>
+              <td>{new Date(t.updated).toLocaleString()}</td>
+              <td>
+                <button type="button" onClick={() => onDeleteSubmit(t.id)}>
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
