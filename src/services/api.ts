@@ -24,6 +24,6 @@ export function patch<Response>(url: string, payload: unknown) {
   return api.patch<Response>(`${url}`, payload).then(response => response.data);
 }
 
-export function deleteRequest<Response>(url: string) {
+export function deleteRequest<Response>(url: string, payload: unknown) {
   return api.delete<Response>(`${url}`).then(response => response.data);
 }
