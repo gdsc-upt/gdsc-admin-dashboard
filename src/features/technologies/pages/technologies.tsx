@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  Card, CardActions, CardContent, CardMedia, Typography,
+} from "@mui/material";
+import Grid from "@mui/material/Grid";
 import { Technology } from "../models/technology";
-import logo from "../../../assets/images/Vector.png";
 import { deleteTechnology, getTechnologies } from "../technologies-api";
 import { TECHNOLOGIES_URLS } from "../urls";
+import logo from "../../../assets/images/Vector.png";
 
 export function Technologies() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
@@ -13,7 +17,7 @@ export function Technologies() {
     getTechnologies().then(setTechnologies);
   }, []);
 
-  const onDeleteSubmit = async (technologyId: string) => {
+  const onDeleteClick = async (technologyId: string) => {
     await deleteTechnology(technologyId);
     getTechnologies().then(setTechnologies);
   };
@@ -21,36 +25,39 @@ export function Technologies() {
   return (
     <>
       <p>Technologies</p>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Created</th>
-            <th>Updated</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* eslint-disable-next-line react/no-array-index-key */}
-          {technologies.map(t => (
-            <tr key={t.id}>
-              <td>
-                <img src={logo} alt="user img" />
-              </td>
-              <td>{t.name}</td>
-              <td>{t.description}</td>
-              <td>{new Date(t.created).toLocaleString()}</td>
-              <td>{new Date(t.updated).toLocaleString()}</td>
-              <td>
-                <button type="button" onClick={() => onDeleteSubmit(t.id)}>
+      {/* eslint-disable-next-line react/no-array-index-key */}
+      <Grid
+        container
+        spacing={4}
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="center"
+        style={{ minHeight: "80vh" }}
+      >
+        {technologies.map(t => (
+          <Grid item xs={2} sm={4} md={3}>
+            <Card key={t.id}>
+              <CardMedia component="img" alt="logo image" image={logo} />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {t.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {t.description}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <button type="button" onClick={() => onDeleteClick(t.id)}>
                   Delete
                 </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                <button type="button" onClick={() => console.log("Muie Dobre")}>
+                  Edit
+                </button>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
       <Link to={TECHNOLOGIES_URLS.addTechnology}>
         <button type="button">Add technology</button>
       </Link>

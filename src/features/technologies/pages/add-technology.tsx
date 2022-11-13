@@ -29,10 +29,17 @@ export function AddTechnology() {
           <div>
             <Form className="Form">
               <span className="title">Add technology</span>
-              <input type="text" name="name" placeholder="Enter name" onChange={handleChange} />
+              <input
+                type="text"
+                maxLength={25}
+                name="name"
+                placeholder="Enter name"
+                onChange={handleChange}
+              />
 
               <input
                 type="string"
+                maxLength={256}
                 name="description"
                 placeholder="Enter description"
                 onChange={handleChange}
