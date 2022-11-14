@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import "../../../styles/pages/technologies.scss";
 import { Technology } from "../models/technology";
 import { deleteTechnology, getTechnologies } from "../technologies-api";
-import { TECHNOLOGIES_URLS } from "../urls";
 import { TechnologyCard } from "../components/technology-card";
+import { AddTechnology } from "./add-technology";
 
 export function TechnologiesPage() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
 
   useEffect(() => {
-    console.log("Fetch Technologies");
+    console.log("test");
     getTechnologies().then(setTechnologies);
   }, []);
+
+  const fetchData = async () => {
+    getTechnologies().then(setTechnologies);
+  };
 
   const onDeleteClick = async (technologyId: string) => {
     console.log(technologyId);
@@ -46,9 +48,7 @@ export function TechnologiesPage() {
           </Grid>
         ))}
       </Grid>
-      <Link to={TECHNOLOGIES_URLS.addTechnology}>
-        <Button variant="text">Add technology</Button>
-      </Link>
+      <AddTechnology onAdded={fetchData} />
     </>
   );
 }
