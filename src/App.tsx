@@ -3,6 +3,7 @@ import "./styles/general/App.scss";
 import {
   createBrowserRouter, Navigate, Outlet, RouterProvider,
 } from "react-router-dom";
+import { Container } from "@mui/material";
 import { useTitle } from "./hooks/general-hooks";
 import { URLS } from "./helpers/constants";
 import { Dashboard } from "./features/dashboard/dashboard";
@@ -59,7 +60,9 @@ export default function App() {
 
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <Container>
+        <RouterProvider router={router} />
+      </Container>
     </div>
   );
 }

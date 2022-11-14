@@ -3,7 +3,7 @@ import {
 } from "formik";
 import { Link, useLocation } from "react-router-dom";
 import React, { useState } from "react";
-import { Alert, CircularProgress } from "@mui/material";
+import { Alert, Button, CircularProgress } from "@mui/material";
 import { AxiosError } from "axios";
 import { LoginRequest } from "../models";
 import { URLS } from "../../../helpers/constants";
@@ -54,9 +54,7 @@ export function LoginForm() {
             <Field type="password" name="password" placeholder="Enter your password" />
             <ErrorMessage name="password" component="div" />
 
-            <button className="mt-2" disabled={isSubmitting} type="submit">
-              {isSubmitting ? <CircularProgress /> : "LOGIN"}
-            </button>
+            <Button type="submit">{isSubmitting ? <CircularProgress /> : "LOGIN"}</Button>
 
             <span className="pt-2">
               No account?
