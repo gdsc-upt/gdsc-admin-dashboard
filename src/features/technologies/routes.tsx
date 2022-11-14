@@ -2,7 +2,7 @@ import React from "react";
 import { RouteObject } from "react-router-dom";
 import { TECHNOLOGIES_URLS } from "./urls";
 import { IfLoggedIn } from "../auth/services/auth-context";
-import { Technologies } from "./pages/technologies";
+import { TechnologiesPage } from "./pages/technologies-page";
 import { AddTechnology } from "./pages/add-technology";
 
 export function TechnologyRoutes(): RouteObject[] {
@@ -11,7 +11,7 @@ export function TechnologyRoutes(): RouteObject[] {
       path: TECHNOLOGIES_URLS.technologies,
       element: (
         <IfLoggedIn>
-          <Technologies />
+          <TechnologiesPage />
         </IfLoggedIn>
       ),
     },
