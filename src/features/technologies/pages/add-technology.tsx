@@ -1,7 +1,8 @@
 import { Form, Formik } from "formik";
 import React from "react";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
 import { Technology } from "../models/technology";
 import { addTechnology } from "../technologies-api";
 
@@ -17,6 +18,14 @@ const initialValues: Technology = {
 interface AddTechnologyProps {
   onAdded: () => void;
 }
+
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+};
 
 export function AddTechnology({ onAdded }: AddTechnologyProps) {
   const [open, setOpen] = React.useState(false);
@@ -37,39 +46,41 @@ export function AddTechnology({ onAdded }: AddTechnologyProps) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Formik initialValues={initialValues} onSubmit={onSubmit}>
-          {({ handleChange }) => (
-            <div>
-              <Form className="Form">
-                <span className="title">Add technology</span>
-                <input
-                  type="text"
-                  maxLength={25}
-                  name="name"
-                  placeholder="Enter name"
-                  onChange={handleChange}
-                />
-
-                <input
-                  type="string"
-                  maxLength={256}
-                  name="description"
-                  placeholder="Enter description"
-                  onChange={handleChange}
-                />
-                <input
-                  type="string"
-                  name="icon"
-                  placeholder="Enter icon"
-                  onSubmit={() => handleChange}
-                />
-                <Button type="submit" onClick={onAdded}>
-                  Add
-                </Button>
-              </Form>
-            </div>
-          )}
-        </Formik>
+        <Box sx={style}>
+          <Formik initialValues={initialValues} onSubmit={onSubmit}>
+            {({ handleChange }) => (
+              <div>
+                <Form className="Form">
+                  <span className="text-center">Add technology</span>
+                  <TextField
+                    id="outlined-basic"
+                    label="Title"
+                    variant="outlined"
+                    inputProps={{ maxLength: 30 }}
+                    onChange={handleChange}
+                  />
+                  <TextField
+                    id="outlined-basic"
+                    label="Description"
+                    variant="outlined"
+                    inputProps={{ maxLength: 256 }}
+                    onChange={handleChange}
+                  />
+                  <TextField
+                    id="outlined-basic"
+                    label="Icon"
+                    variant="outlined"
+                    inputProps={{ maxLength: 30 }}
+                    onChange={handleChange}
+                  />
+                  <Button type="submit" onClick={onAdded}>
+                    Add
+                  </Button>
+                </Form>
+              </div>
+            )}
+          </Formik>
+        </Box>
       </Modal>
     </>
   );

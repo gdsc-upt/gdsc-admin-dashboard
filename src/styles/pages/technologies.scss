@@ -42,9 +42,11 @@ img {
 
 .text-center {
   position: relative;
+  text-align: center;
   font: 150% JetBrains Mono, monospace;
   font-weight: bold;
-  color: #9b9b9b;
+  color: #007bff;
+  padding-bottom: 20px;
 }
 
 /*button {
@@ -97,10 +99,6 @@ input {
   color: #8e8c8c;
   text-align: left;
   padding-left: 1em;
-}
-
-input:focus-visible {
-  border: 2px solid #007bff;
 }
 
 input:focus {

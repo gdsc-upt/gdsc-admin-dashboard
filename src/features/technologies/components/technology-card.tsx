@@ -20,7 +20,13 @@ export function TechnologyCard({ technology, onDelete, onEdit }: TechnologyCardP
         component="img"
         alt="logo image"
         image={logo}
-        sx={{ paddingBottom: 0, paddingTop: 0 }}
+        sx={{
+          height: "200px",
+          margin: "auto",
+          width: "auto",
+          paddingTop: "10px",
+          paddingBottom: "10px",
+        }}
       />
 
       <CardContent>

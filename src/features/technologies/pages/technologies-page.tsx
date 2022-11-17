@@ -26,7 +26,7 @@ export function TechnologiesPage() {
 
   return (
     <>
-      <p>Technologies</p>
+      <h2>Technologies</h2>
       {/* eslint-disable-next-line react/no-array-index-key */}
       <Grid
         container
