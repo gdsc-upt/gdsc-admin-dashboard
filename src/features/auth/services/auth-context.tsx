@@ -49,8 +49,9 @@ export function IfNotLoggedIn({ children, redirectTo }: IfNotLoggedInProps) {
   const location = useLocation();
 
   console.log("if not logged in", auth);
-  if (auth.user?.token) {
+  if (auth.user?.token && new Date(auth.user?.expiration ?? "").getTime() > Date.now()) {
     console.log("go to: ", redirectTo);
+    auth.signOut();
     return <Navigate to={redirectTo || "/"} state={{ from: location }} replace />;
   }
 
