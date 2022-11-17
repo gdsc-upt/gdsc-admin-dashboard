@@ -19,7 +19,12 @@ interface AddTechnologyProps {
   onAdded: () => void;
 }
 
-const style = {
+const inputStyle = {
+  marginTop: 1,
+  marginBottom: 1,
+};
+
+const modalStyle = {
   position: "absolute" as "absolute",
   top: "50%",
   left: "50%",
@@ -46,7 +51,7 @@ export function AddTechnology({ onAdded }: AddTechnologyProps) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={modalStyle}>
           <Formik initialValues={initialValues} onSubmit={onSubmit}>
             {({ handleChange }) => (
               <div>
@@ -56,22 +61,28 @@ export function AddTechnology({ onAdded }: AddTechnologyProps) {
                     id="outlined-basic"
                     label="Title"
                     variant="outlined"
+                    name="name"
                     inputProps={{ maxLength: 30 }}
                     onChange={handleChange}
+                    sx={inputStyle}
                   />
                   <TextField
                     id="outlined-basic"
                     label="Description"
                     variant="outlined"
+                    name="description"
                     inputProps={{ maxLength: 256 }}
                     onChange={handleChange}
+                    sx={inputStyle}
                   />
                   <TextField
                     id="outlined-basic"
                     label="Icon"
+                    name="icon"
                     variant="outlined"
                     inputProps={{ maxLength: 30 }}
                     onChange={handleChange}
+                    sx={inputStyle}
                   />
                   <Button type="submit" onClick={onAdded}>
                     Add
