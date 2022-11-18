@@ -26,7 +26,7 @@ export function TechnologiesPage() {
 
   return (
     <>
-      <p>Technologies</p>
+      <h2>Technologies</h2>
       {/* eslint-disable-next-line react/no-array-index-key */}
       <Grid
         container
@@ -39,7 +39,7 @@ export function TechnologiesPage() {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
       >
         {technologies.map(t => (
-          <Grid item xs={4}>
+          <Grid item xs={4} key={t.id}>
             <TechnologyCard
               technology={t}
               onDelete={id => onDeleteClick(id)}
