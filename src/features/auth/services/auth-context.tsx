@@ -30,9 +30,9 @@ export function IfLoggedIn({ children }: { children: JSX.Element }) {
   const auth = useAuth();
   const location = useLocation();
 
-  console.log("require auth", auth);
   if (!auth.user?.token || new Date(auth.user?.expiration ?? "").getTime() < Date.now()) {
-    console.log("go to login");
+    console.log("Not logged in, go to login");
+    auth.signOut();
     return <Navigate to={AUTH_URLS.login} state={{ from: location }} replace />;
   }
 
@@ -48,10 +48,8 @@ export function IfNotLoggedIn({ children, redirectTo }: IfNotLoggedInProps) {
   const auth = useAuth();
   const location = useLocation();
 
-  console.log("if not logged in", auth);
-  if (auth.user?.token && new Date(auth.user?.expiration ?? "").getTime() > Date.now()) {
-    console.log("go to: ", redirectTo);
-    auth.signOut();
+  if (auth.user?.token && new Date(auth.user.expiration ?? "").getTime() > Date.now()) {
+    console.log("Is logged in, go to: ", redirectTo);
     return <Navigate to={redirectTo || "/"} state={{ from: location }} replace />;
   }
 
