@@ -12,14 +12,18 @@ export interface MiniDrawerProps {
 
 export default function MiniDrawer({ children }: MiniDrawerProps) {
   const [open, setOpen] = useState(false);
+  const openDrawer = () => setOpen(true);
+  const closeDrawer = () => setOpen(false);
 
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
 
-      <GdscAppBar open={open} handleDrawerOpen={() => setOpen(true)} />
+      <GdscAppBar open={open} handleDrawerOpen={openDrawer} />
 
-      <GdscDrawer open={open} handleDrawerClose={() => setOpen(false)} />
+      <Box onMouseEnter={openDrawer} onMouseLeave={closeDrawer}>
+        <GdscDrawer open={open} handleDrawerClose={closeDrawer} />
+      </Box>
 
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
