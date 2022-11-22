@@ -3,14 +3,13 @@ import "./styles/general/App.scss";
 import {
   createBrowserRouter, Navigate, Outlet, RouterProvider,
 } from "react-router-dom";
-import { Container } from "@mui/material";
 import { useTitle } from "./hooks/general-hooks";
 import { URLS } from "./helpers/constants";
 import { Dashboard } from "./features/dashboard/dashboard";
 import { AuthProvider, IfLoggedIn } from "./features/auth/services/auth-context";
 import { AuthRoutes } from "./features/auth";
-import { BottomMenu } from "./components/bottomMenu";
 import { TechnologyRoutes } from "./features/technologies/routes";
+import MiniDrawer from "./components/app-layout";
 
 const router = createBrowserRouter([
   {
@@ -25,11 +24,9 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: (
-          <>
+          <MiniDrawer>
             <Outlet />
-            {" "}
-            <BottomMenu />
-          </>
+          </MiniDrawer>
         ),
         children: [
           {
@@ -60,9 +57,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <Container>
-        <RouterProvider router={router} />
-      </Container>
+      <RouterProvider router={router} />
     </div>
   );
 }
