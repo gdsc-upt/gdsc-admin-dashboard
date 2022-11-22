@@ -29,6 +29,7 @@ export function useAuth() {
 export function IfLoggedIn({ children }: { children: JSX.Element }) {
   const auth = useAuth();
   const location = useLocation();
+  console.log("If not logged in guard");
 
   if (!auth.user?.token || new Date(auth.user?.expiration ?? "").getTime() < Date.now()) {
     console.log("Not logged in, go to login");
