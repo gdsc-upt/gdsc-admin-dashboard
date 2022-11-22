@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import GdscAppBar from "./gdsc-app-bar";
@@ -7,10 +7,10 @@ import { DrawerHeader } from "./constants";
 import GdscDrawer from "./gdsc-drawer";
 
 export interface MiniDrawerProps {
-  readonly children: React.ReactNode;
+  readonly children: ReactNode;
 }
 
-export default function MiniDrawer({ children }: MiniDrawerProps) {
+export default function GdscLayout({ children }: MiniDrawerProps) {
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);

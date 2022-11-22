@@ -9,7 +9,7 @@ import { Dashboard } from "./features/dashboard/dashboard";
 import { AuthProvider, IfLoggedIn } from "./features/auth/services/auth-context";
 import { AuthRoutes } from "./features/auth";
 import { TechnologyRoutes } from "./features/technologies/routes";
-import MiniDrawer from "./components/app-layout";
+import GdscLayout from "./components/app-layout";
 
 const router = createBrowserRouter([
   {
@@ -24,9 +24,9 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: (
-          <MiniDrawer>
+          <GdscLayout>
             <Outlet />
-          </MiniDrawer>
+          </GdscLayout>
         ),
         children: [
           {

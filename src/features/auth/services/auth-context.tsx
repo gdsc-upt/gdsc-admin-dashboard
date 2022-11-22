@@ -14,10 +14,18 @@ import { AUTH_DATA_KEY } from "../../../helpers/constants";
 type VoidFn = () => void;
 
 export interface IAuthContext {
-  user?: LoginResponse;
-  signIn: (data: LoginRequest, onSuccess: VoidFn, onError?: (error: AxiosError) => void) => void;
-  signUp: (data: RegisterRequest, onSuccess: VoidFn, onError?: (error: AxiosError) => void) => void;
-  signOut: (callback?: VoidFn) => void;
+  readonly user?: LoginResponse;
+  readonly signIn: (
+    data: LoginRequest,
+    onSuccess: VoidFn,
+    onError?: (error: AxiosError) => void,
+  ) => void;
+  readonly signUp: (
+    data: RegisterRequest,
+    onSuccess: VoidFn,
+    onError?: (error: AxiosError) => void,
+  ) => void;
+  readonly signOut: (callback?: VoidFn) => void;
 }
 
 const AuthContext = createContext<IAuthContext>(null!);
