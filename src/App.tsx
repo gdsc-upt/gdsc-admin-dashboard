@@ -8,6 +8,7 @@ import { URLS } from "./helpers/constants";
 import { Dashboard } from "./features/dashboard/dashboard";
 import { AuthProvider, IfLoggedIn } from "./features/auth/services/auth-context";
 import { AuthRoutes } from "./features/auth";
+import { RedirectRoutes } from "./features/redirects/routes";
 import { TechnologyRoutes } from "./features/technologies/routes";
 import MiniDrawer from "./components/app-layout";
 
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
               </IfLoggedIn>
             ),
           },
+          ...RedirectRoutes(),
           ...TechnologyRoutes(),
           {
             path: "*",
