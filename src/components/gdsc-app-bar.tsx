@@ -48,7 +48,14 @@ export default function GdscAppBar({ handleDrawerOpen, open }: GdscAppBarProps) 
         >
           <MenuIcon />
         </IconButton>
-        <Box sx={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <Typography variant="h6" noWrap component="div">
             GDSC Admin Dashboard
           </Typography>
