@@ -6,11 +6,11 @@ import GdscAppBar from "./gdsc-app-bar";
 import { DrawerHeader } from "./constants";
 import GdscDrawer from "./gdsc-drawer";
 
-export interface MiniDrawerProps {
+export interface GdscLayoutProps {
   readonly children: ReactNode;
 }
 
-export default function GdscLayout({ children }: MiniDrawerProps) {
+export default function GdscLayout({ children }: GdscLayoutProps) {
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);

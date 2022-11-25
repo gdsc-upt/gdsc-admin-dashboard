@@ -1,8 +1,9 @@
-import React from "react";
+import React, { createContext } from "react";
 import "./styles/general/App.scss";
 import {
   createBrowserRouter, Navigate, Outlet, RouterProvider,
 } from "react-router-dom";
+import { createTheme, ThemeProvider } from "@mui/material";
 import { useTitle } from "./hooks/general-hooks";
 import { URLS } from "./helpers/constants";
 import { Dashboard } from "./features/dashboard/dashboard";
@@ -11,6 +12,10 @@ import { AuthRoutes } from "./features/auth";
 import { RedirectRoutes } from "./features/redirects/routes";
 import { TechnologyRoutes } from "./features/technologies/routes";
 import GdscLayout from "./components/app-layout";
+
+export const ColorModeContext = createContext({
+  toggleColorMode: () => {},
+});
 
 const router = createBrowserRouter([
   {
@@ -55,11 +60,31 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
+  const [mode, setMode] = React.useState<"light" | "dark">("light");
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode(prevMode => (prevMode === "light" ? "dark" : "light"));
+      },
+    }),
+    [],
+  );
+
+  const theme = React.useMemo(
+    () => createTheme({
+      palette: {
+        mode,
+      },
+    }),
+    [mode],
+  );
   useTitle("Admin Dashboard GDSC");
 
   return (
-    <div className="App">
-      <RouterProvider router={router} />
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
