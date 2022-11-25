@@ -15,7 +15,7 @@ interface TechnologyCardProps {
 
 export function TechnologyCard({ technology, onDelete, onEdit }: TechnologyCardProps) {
   return (
-    <Card key={technology.id} sx={{ maxWidth: 350 }}>
+    <Card key={technology.id} sx={{ maxWidth: 350, width: "100%" }}>
       <CardMedia
         component="img"
         alt="logo image"
@@ -36,7 +36,7 @@ export function TechnologyCard({ technology, onDelete, onEdit }: TechnologyCardP
         <Typography
           variant="body2"
           color="text.secondary"
-          height={200}
+          height={100}
           text-overflow="ellipsis"
           overflow="hidden"
         >
