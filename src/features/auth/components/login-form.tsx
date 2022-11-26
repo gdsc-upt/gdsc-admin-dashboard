@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { AxiosError } from "axios";
 import { URLS } from "../../../helpers/constants";
-import { useAuth } from "../services/auth-context";
+import { useAuth } from "./auth-context";
 import { useRouting } from "../../../routing";
 import { AUTH_URLS } from "../routes";
 import { LoginRequest } from "../models/login.request";

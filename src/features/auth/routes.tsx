@@ -2,8 +2,8 @@ import { RouteObject } from "react-router-dom";
 import React from "react";
 import { LoginPage } from "./pages/login";
 import { RegisterPage } from "./pages/register";
-import { IfNotLoggedIn } from "./services/auth-context";
 import { LogoutPage } from "./pages/logout";
+import { IfNotLoggedIn } from "./components/if-not-logged-in";
 
 export const AUTH_URLS = {
   login: "/login",

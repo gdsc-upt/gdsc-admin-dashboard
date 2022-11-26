@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { AxiosError } from "axios";
 import { Alert } from "@mui/material";
 import { useRouting } from "../../../routing";
-import { useAuth } from "../services/auth-context";
+import { useAuth } from "./auth-context";
 import { AUTH_URLS } from "../routes";
 import { RegisterRequest } from "../models/register.request";
 

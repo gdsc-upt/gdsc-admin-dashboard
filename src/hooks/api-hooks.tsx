@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { API_URL } from "../helpers/constants";
-import { useAuth } from "../features/auth/services/auth-context";
+import { useAuth } from "../features/auth";
 import { useData } from "./data-hooks";
 
 export const api = axios.create({
