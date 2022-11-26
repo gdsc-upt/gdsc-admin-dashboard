@@ -1,16 +1,17 @@
 import {
-  Card, CardActions, CardContent, CardMedia, IconButton, Typography,
+  Card, CardActions, CardContent, CardMedia, Typography,
 } from "@mui/material";
 import React from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import logo from "../../../assets/images/Vector.png";
 import { Technology } from "../models/technology";
+import GdscIconButton from "../../../components/buttons/gdsc-icon-button";
 
 interface TechnologyCardProps {
-  technology: Technology;
-  onDelete: (technologyId: string) => void;
-  onEdit: (technologyId: string) => void;
+  readonly technology: Technology;
+  readonly onDelete: (technologyId: string) => void;
+  readonly onEdit: (technologyId: string) => void;
 }
 
 export function TechnologyCard({ technology, onDelete, onEdit }: TechnologyCardProps) {
@@ -29,13 +30,20 @@ export function TechnologyCard({ technology, onDelete, onEdit }: TechnologyCardP
         }}
       />
 
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+      <CardContent className="flex-column">
+        <Typography
+          color="primary"
+          sx={{ alignSelf: "center" }}
+          gutterBottom
+          variant="h5"
+          component="div"
+        >
           {technology.name}
         </Typography>
+
         <Typography
           variant="body2"
-          color="text.secondary"
+          color="secondary"
           height={100}
           text-overflow="ellipsis"
           overflow="hidden"
@@ -43,19 +51,20 @@ export function TechnologyCard({ technology, onDelete, onEdit }: TechnologyCardP
           {technology.description}
         </Typography>
       </CardContent>
+
       <CardActions
         sx={{
           display: "flex",
           justifyContent: "flex-end",
-          alignItems: "flex-end",
         }}
       >
-        <IconButton aria-label="delete" size="large" onClick={() => onDelete(technology.id)}>
-          <DeleteIcon fontSize="inherit" />
-        </IconButton>
-        <IconButton aria-label="edit" size="large" onClick={() => onEdit(technology.id)}>
-          <EditIcon fontSize="inherit" />
-        </IconButton>
+        <GdscIconButton color="error" tooltip="Delete this technology" label="Delete">
+          <DeleteIcon onClick={() => onDelete(technology.id)} />
+        </GdscIconButton>
+
+        <GdscIconButton color="primary" tooltip="Open a modal to edit this technology" label="Edit">
+          <EditIcon onClick={() => onEdit(technology.id)} />
+        </GdscIconButton>
       </CardActions>
     </Card>
   );
