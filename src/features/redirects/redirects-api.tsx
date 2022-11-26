@@ -2,13 +2,12 @@ import { Redirect } from "./models/redirect";
 import {
   deleteRequest, get, patch, post,
 } from "../../services/api";
-import { RedirectRequest } from "./models/redirect-request";
 
 export function getRedirects() {
-  return get<Redirect[]>("redirects");
+  return get<Redirect[]>("redirects/admin");
 }
 
-export function addRedirect(redirect: RedirectRequest) {
+export function addRedirect(redirect: Redirect) {
   return post<Redirect>("redirects", redirect);
 }
 
@@ -16,6 +15,6 @@ export function deleteRedirect(redirectId: string) {
   return deleteRequest(`redirects/${redirectId}`, {});
 }
 
-export function patchRedirect(redirectId: string, redirect: RedirectRequest) {
+export function patchRedirect(redirectId: string, redirect: Redirect) {
   return patch<Redirect>(`redirects/${redirectId}`, redirect);
 }
