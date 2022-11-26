@@ -5,7 +5,9 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { Box } from "@mui/material";
 import { drawerWidth } from "./constants";
+import LoginDisplay from "./login-display";
 
 const StyledAppBar = styled(AppBar, {
   shouldForwardProp: prop => prop !== "open",
@@ -46,9 +48,20 @@ export default function GdscAppBar({ handleDrawerOpen, open }: GdscAppBarProps) 
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          Mini variant drawer
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h6" noWrap component="div">
+            GDSC Admin Dashboard
+          </Typography>
+
+          <LoginDisplay />
+        </Box>
       </Toolbar>
     </StyledAppBar>
   );

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import "../../../styles/pages/technologies.scss";
+import { Box } from "@mui/material";
 import { Technology } from "../models/technology";
 import { deleteTechnology, getTechnologies } from "../technologies-api";
 import { TechnologyCard } from "../components/technology-card";
 import { AddTechnology } from "./add-technology";
+import ActionsBar from "../../../components/actions-bar";
+import TechnologiesActionsTitle from "../components/technologies-actions-title";
 
 export function TechnologiesPage() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
 
   useEffect(() => {
-    console.log("test");
     getTechnologies().then(setTechnologies);
   }, []);
 
@@ -19,15 +21,19 @@ export function TechnologiesPage() {
   };
 
   const onDeleteClick = async (technologyId: string) => {
-    console.log(technologyId);
     await deleteTechnology(technologyId);
     getTechnologies().then(setTechnologies);
   };
 
   return (
     <>
-      <h2>Technologies</h2>
-      {/* eslint-disable-next-line react/no-array-index-key */}
+      <Box sx={{ marginBottom: 2 }}>
+        <ActionsBar
+          middleContent={<TechnologiesActionsTitle />}
+          rightContent={<AddTechnology onAdded={fetchData} />}
+        />
+      </Box>
+
       <Grid
         container
         spacing={4}
@@ -39,7 +45,7 @@ export function TechnologiesPage() {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
       >
         {technologies.map(t => (
-          <Grid item xs={4} key={t.id}>
+          <Grid item xs={3} key={t.id} sx={{ display: "flex", justifyContent: "center" }}>
             <TechnologyCard
               technology={t}
               onDelete={id => onDeleteClick(id)}
@@ -48,7 +54,10 @@ export function TechnologiesPage() {
           </Grid>
         ))}
       </Grid>
-      <AddTechnology onAdded={fetchData} />
+
+      <Box sx={{ marginTop: 2 }}>
+        <ActionsBar rightContent={<AddTechnology onAdded={fetchData} />} />
+      </Box>
     </>
   );
 }

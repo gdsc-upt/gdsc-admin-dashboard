@@ -7,6 +7,7 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import { Technology } from "../models/technology";
 import { addTechnology } from "../technologies-api";
+import PrimaryButton from "../../../components/buttons/primary-button";
 
 const initialValues: Technology = {
   id: "",
@@ -66,9 +67,8 @@ export function AddTechnology({ onAdded }: AddTechnologyProps) {
 
   return (
     <>
-      <Button sx={{ marginTop: 3, fontSize: 16 }} disableRipple onClick={handleOpen}>
-        Add Technology
-      </Button>
+      <PrimaryButton text="Add" onClick={handleOpen} />
+
       <Modal
         disableAutoFocus
         open={open}
