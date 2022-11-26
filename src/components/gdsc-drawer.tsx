@@ -69,7 +69,7 @@ export default function GdscDrawer({ handleDrawerClose, open }: GdscDrawerProps)
     {
       text: "Home",
       icon: <DashboardIcon />,
-      to: URLS.technologies,
+      to: URLS.dashboard,
     },
     {
       text: "Menu items",

@@ -110,7 +110,7 @@ export function AddTechnology({ onAdded }: AddTechnologyProps) {
                     onChange={handleChange}
                     sx={inputStyle}
                   />
-                  <Button type="submit" onClick={onAdded} disableRipple>
+                  <Button tabIndex={-1} type="submit" onClick={onAdded} disableRipple>
                     Add
                   </Button>
                 </Form>

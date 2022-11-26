@@ -21,9 +21,13 @@ export function post<Response>(url: string, payload: unknown) {
 }
 
 export function patch<Response>(url: string, payload: unknown) {
-  return api.patch<Response>(`${url}`, payload).then(response => response.data);
+  return api.patch<Response>(`${url}`, payload, {
+    headers: { Authorization: `Bearer ${authData.token}` },
+  }).then(response => response.data);
 }
 
 export function deleteRequest<Response>(url: string, payload: unknown) {
-  return api.delete<Response>(`${url}`).then(response => response.data);
+  return api.delete<Response>(`${url}`, {
+    headers: { Authorization: `Bearer ${authData.token}` },
+  }).then(response => response.data);
 }

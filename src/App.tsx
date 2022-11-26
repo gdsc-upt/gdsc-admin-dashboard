@@ -4,6 +4,7 @@ import {
   createBrowserRouter, Navigate, Outlet, RouterProvider,
 } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 import { useTitle } from "./hooks/general-hooks";
 import { URLS } from "./helpers/constants";
 import { Dashboard } from "./features/dashboard/dashboard";
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <AuthProvider>
+        <CssBaseline />
         <Outlet />
       </AuthProvider>
     ),

@@ -3,7 +3,9 @@ import {
 } from "formik";
 import { Link, useLocation } from "react-router-dom";
 import React, { useState } from "react";
-import { Alert, Button, CircularProgress } from "@mui/material";
+import {
+  Alert, Button, CircularProgress, Typography,
+} from "@mui/material";
 import { AxiosError } from "axios";
 import { LoginRequest } from "../models";
 import { URLS } from "../../../helpers/constants";
@@ -39,8 +41,8 @@ export function LoginForm() {
     <Formik initialValues={initialValues} onSubmit={tryLogin}>
       {({ isSubmitting }) => (
         <div>
-          <Form className="Form flex-column">
-            <span className="title pb-2">Admin Dashboard</span>
+          <Form className="flex-column">
+            <Typography color="primary" variant="h6" sx={{ textAlign: "center" }}>Admin Dashboard</Typography>
 
             {error ? (
               <Alert sx={{ height: "100%" }} className="mb-2" severity="error">
