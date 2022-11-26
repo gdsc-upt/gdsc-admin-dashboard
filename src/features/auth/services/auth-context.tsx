@@ -3,13 +3,14 @@ import React, {
 } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AxiosError } from "axios";
-import {
-  LoginRequest, LoginResponse, RegisterRequest, RegisterResponse,
-} from "../models";
 import authData from "../helpers/auth-data";
 import { AUTH_URLS } from "../routes";
 import { post } from "../../../services/api";
 import { AUTH_DATA_KEY } from "../../../helpers/constants";
+import { LoginResponse } from "../models/login.response";
+import { RegisterRequest } from "../models/register.request";
+import { LoginRequest } from "../models/login.request";
+import { RegisterResponse } from "../models/register.response";
 
 type VoidFn = () => void;
 
@@ -80,13 +81,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return login.catch(error => onError?.(error));
   };
 
-  const signUp = (data: RegisterRequest, callback: VoidFn, onError?: (error: AxiosError) => void) => post<RegisterResponse>("auth/register", data)
-    .then(response => {
+  const signUp = (
+    data: RegisterRequest,
+    callback: VoidFn,
+    onError?: (error: AxiosError) => void,
+  ) => {
+    const register = post<RegisterResponse>("auth/register", data).then(response => {
       console.log("register response", response);
       setTimeout(() => callback());
       return response;
-    })
-    .catch(error => onError?.(error));
+    });
+
+    return register.catch(error => onError?.(error));
+  };
 
   const signOut = (callback: VoidFn = () => {}) => {
     console.log("logout");
@@ -95,7 +102,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setTimeout(() => callback());
   };
 
-  const value = useMemo(
+  const value = useMemo<IAuthContext>(
     () => ({
       user,
       signIn,

@@ -17,8 +17,8 @@ import GdscMenuList, { GdscMenuItem } from "./gdsc-menu-list";
 import { URLS } from "../helpers/constants";
 import { MENU_ITEMS_URLS } from "../features/menu-items/urls";
 import { TECHNOLOGIES_URLS } from "../features/technologies/urls";
-import { AUTH_URLS } from "../features/auth";
 import { REDIRECTS_URLS } from "../features/redirects/urls";
+import { AUTH_URLS } from "../features/auth/routes";
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,

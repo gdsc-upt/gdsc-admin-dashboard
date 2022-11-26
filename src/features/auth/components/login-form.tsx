@@ -7,11 +7,11 @@ import {
   Alert, Button, CircularProgress, Typography,
 } from "@mui/material";
 import { AxiosError } from "axios";
-import { LoginRequest } from "../models";
 import { URLS } from "../../../helpers/constants";
 import { useAuth } from "../services/auth-context";
 import { useRouting } from "../../../routing";
 import { AUTH_URLS } from "../routes";
+import { LoginRequest } from "../models/login.request";
 
 const initialValues: LoginRequest = {
   username: "admin",

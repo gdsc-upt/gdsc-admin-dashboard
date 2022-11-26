@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { AxiosError } from "axios";
 import { Alert } from "@mui/material";
-import { RegisterRequest } from "../models";
 import { useRouting } from "../../../routing";
 import { useAuth } from "../services/auth-context";
 import { AUTH_URLS } from "../routes";
+import { RegisterRequest } from "../models/register.request";
 
 const initialValues: RegisterRequest = {
   username: "admin",
