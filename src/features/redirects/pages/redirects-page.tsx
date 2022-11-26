@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Box,
   IconButton,
   Paper,
   Table,
@@ -14,6 +15,8 @@ import { Redirect } from "../models/redirect";
 import { deleteRedirect, getRedirects } from "../redirects-api";
 import { EditRedirect } from "../components/edit-redirect";
 import { AddRedirect } from "../components/add-redirect";
+import ActionsBar from "../../../components/actions-bar";
+import RedirectsActionsTitle from "../components/redirects-actions-title";
 
 export function RedirectsPage() {
   const [redirects, setRedirects] = useState<Redirect[]>([]);
@@ -35,7 +38,13 @@ export function RedirectsPage() {
 
   return (
     <>
-      <h2>Redirects</h2>
+      <Box sx={{ marginBottom: 2 }}>
+        <ActionsBar
+          middleContent={<RedirectsActionsTitle />}
+          rightContent={<AddRedirect onAdded={fetchData} />}
+        />
+      </Box>
+
       <TableContainer component={Paper}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -68,7 +77,6 @@ export function RedirectsPage() {
           </TableBody>
         </Table>
       </TableContainer>
-      <AddRedirect onAdded={fetchData} />
     </>
   );
 }

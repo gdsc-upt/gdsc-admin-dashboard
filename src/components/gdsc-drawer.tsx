@@ -10,6 +10,7 @@ import Drawer from "@mui/material/Drawer";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import CategoryIcon from "@mui/icons-material/Category";
 import DataObjectIcon from "@mui/icons-material/DataObject";
+import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { DrawerHeader, drawerWidth } from "./constants";
 import GdscMenuList, { GdscMenuItem } from "./gdsc-menu-list";
@@ -17,6 +18,7 @@ import { URLS } from "../helpers/constants";
 import { MENU_ITEMS_URLS } from "../features/menu-items/urls";
 import { TECHNOLOGIES_URLS } from "../features/technologies/urls";
 import { AUTH_URLS } from "../features/auth";
+import { REDIRECTS_URLS } from "../features/redirects/urls";
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -78,6 +80,11 @@ export default function GdscDrawer({ handleDrawerClose, open }: GdscDrawerProps)
       text: "Technologies",
       icon: <DataObjectIcon />,
       to: TECHNOLOGIES_URLS.technologies,
+    },
+    {
+      text: "Redirects",
+      icon: <SyncAltIcon />,
+      to: REDIRECTS_URLS.redirects,
     },
   ];
 
