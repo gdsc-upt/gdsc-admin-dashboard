@@ -6,7 +6,7 @@ import { useSnackbar } from "../../../components/snackbar/gdsc-snackbar-context"
 import { Technology } from "../models/technology";
 import { deleteTechnology, getTechnologies } from "../technologies-api";
 import TechnologyCard from "../components/technology-card";
-import AddTechnology from "./add-technology";
+import AddTechnologyModal from "../components/add-technology-modal";
 import ActionsBar from "../../../components/actions-bar";
 import TechnologiesActionsTitle from "../components/technologies-actions-title";
 
@@ -32,7 +32,7 @@ export function TechnologiesPage() {
       <Box sx={{ marginBottom: 2 }}>
         <ActionsBar
           middleContent={<TechnologiesActionsTitle />}
-          rightContent={<AddTechnology onAdded={fetchData} />}
+          rightContent={<AddTechnologyModal onAdded={fetchData} />}
         />
       </Box>
 
@@ -58,7 +58,7 @@ export function TechnologiesPage() {
       </Grid>
 
       <Box sx={{ marginTop: 2 }}>
-        <ActionsBar rightContent={<AddTechnology onAdded={fetchData} />} />
+        <ActionsBar rightContent={<AddTechnologyModal onAdded={fetchData} />} />
       </Box>
     </>
   );

@@ -18,7 +18,7 @@ const initialValues: Technology = {
 };
 
 interface AddTechnologyProps {
-  onAdded: () => void;
+  readonly onAdded: () => void;
 }
 
 const inputStyle = {
@@ -26,7 +26,7 @@ const inputStyle = {
   marginBottom: 1,
 };
 
-export default function AddTechnology({ onAdded }: AddTechnologyProps) {
+export default function AddTechnologyModal({ onAdded }: AddTechnologyProps) {
   const [open, setOpen] = useState(false);
   const snackBar = useSnackbar();
 
