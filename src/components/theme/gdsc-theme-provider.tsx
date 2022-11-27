@@ -5,12 +5,9 @@ import { IThemeModeContext, ThemeModeContext } from "./gdsc-theme-context";
 import {
   getStoredThemeMode, THEME_MODE_KEY, ThemeMode, ThemeModes,
 } from "./gdsc-theme-modes";
+import { DefaultProps } from "../../helpers/types";
 
-export interface GdscThemeProps {
-  readonly children: React.ReactNode;
-}
-
-export default function GdscTheme({ children }: GdscThemeProps) {
+export default function GdscThemeProvider({ children }: DefaultProps) {
   const [mode, setMode] = useState<ThemeMode>(getStoredThemeMode());
 
   function toggleColorMode() {

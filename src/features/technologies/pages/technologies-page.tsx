@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import "../../../styles/pages/technologies.scss";
 import { Box } from "@mui/material";
+import { useSnackbar } from "../../../components/snackbar/gdsc-snackbar-context";
 import { Technology } from "../models/technology";
 import { deleteTechnology, getTechnologies } from "../technologies-api";
-import { TechnologyCard } from "../components/technology-card";
-import { AddTechnology } from "./add-technology";
+import TechnologyCard from "../components/technology-card";
+import AddTechnology from "./add-technology";
 import ActionsBar from "../../../components/actions-bar";
 import TechnologiesActionsTitle from "../components/technologies-actions-title";
 
 export function TechnologiesPage() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
+  const snackBar = useSnackbar();
 
   useEffect(() => {
     getTechnologies().then(setTechnologies);
@@ -49,7 +51,7 @@ export function TechnologiesPage() {
             <TechnologyCard
               technology={t}
               onDelete={id => onDeleteClick(id)}
-              onEdit={() => console.log("Muie Dobre")}
+              onEdit={() => snackBar.showInfo("Edit")}
             />
           </Grid>
         ))}

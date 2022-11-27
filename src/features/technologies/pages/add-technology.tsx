@@ -1,10 +1,11 @@
 import { Form, Formik } from "formik";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
-  Alert, Box, Button, Snackbar,
+  Box, Button,
 } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
+import { useSnackbar } from "../../../components/snackbar";
 import { Technology } from "../models/technology";
 import { addTechnology } from "../technologies-api";
 import PrimaryButton from "../../../components/buttons/primary-button";
@@ -35,14 +36,12 @@ const modalStyle = {
   width: 400,
 };
 
-export function AddTechnology({ onAdded }: AddTechnologyProps) {
-  const [open, setOpen] = React.useState(false);
-  const [error, setError] = React.useState<string | undefined>(undefined);
+export default function AddTechnology({ onAdded }: AddTechnologyProps) {
+  const [open, setOpen] = useState(false);
+  const snackBar = useSnackbar();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleErrorOpen = () => setError("Muie Dobre");
-  const handleErrorClose = () => setError(undefined);
 
   const onSubmit = async (technology: Technology) => {
     const response = await addTechnology(technology);
@@ -50,7 +49,8 @@ export function AddTechnology({ onAdded }: AddTechnologyProps) {
       onAdded();
       return handleClose();
     }
-    handleErrorOpen();
+    console.log("error");
+    snackBar.showError("Muie Dobre");
     return false;
   };
 
@@ -119,16 +119,6 @@ export function AddTechnology({ onAdded }: AddTechnologyProps) {
           </Formik>
         </Box>
       </Modal>
-      <Snackbar
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        open={!!error?.length}
-        autoHideDuration={2500}
-        onClose={handleErrorClose}
-      >
-        <Alert onClose={handleErrorClose} severity="error" sx={{ width: "1000" }}>
-          {error}
-        </Alert>
-      </Snackbar>
     </>
   );
 }

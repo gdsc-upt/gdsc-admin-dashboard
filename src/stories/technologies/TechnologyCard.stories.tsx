@@ -1,7 +1,7 @@
 import React from "react";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { TechnologyCard } from "../../features/technologies/components/technology-card";
+import TechnologyCard from "../../features/technologies/components/technology-card";
 import { Technology } from "../../features/technologies/models/technology";
 
 const component = TechnologyCard;

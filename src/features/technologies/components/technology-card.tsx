@@ -14,7 +14,7 @@ interface TechnologyCardProps {
   readonly onEdit: (technologyId: string) => void;
 }
 
-export function TechnologyCard({ technology, onDelete, onEdit }: TechnologyCardProps) {
+export default function TechnologyCard({ technology, onDelete, onEdit }: TechnologyCardProps) {
   return (
     <Card key={technology.id} sx={{ maxWidth: 350, width: "100%" }}>
       <CardMedia
@@ -58,13 +58,21 @@ export function TechnologyCard({ technology, onDelete, onEdit }: TechnologyCardP
           justifyContent: "flex-end",
         }}
       >
-        <GdscIconButton color="error" tooltip="Delete this technology" label="Delete">
-          <DeleteIcon onClick={() => onDelete(technology.id)} />
-        </GdscIconButton>
+        <GdscIconButton
+          onClick={() => onDelete(technology.id)}
+          color="error"
+          tooltip="Delete this technology"
+          label="Delete"
+          icon={<DeleteIcon />}
+        />
 
-        <GdscIconButton color="primary" tooltip="Open a modal to edit this technology" label="Edit">
-          <EditIcon onClick={() => onEdit(technology.id)} />
-        </GdscIconButton>
+        <GdscIconButton
+          onClick={() => onEdit(technology.id)}
+          color="primary"
+          tooltip="Open a modal to edit this technology"
+          label="Edit"
+          icon={<EditIcon />}
+        />
       </CardActions>
     </Card>
   );

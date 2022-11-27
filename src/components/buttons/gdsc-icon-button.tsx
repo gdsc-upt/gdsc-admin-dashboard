@@ -4,9 +4,10 @@ import { Color } from "../../helpers/constants";
 import { StyledTooltip } from "../styled-tooltip";
 
 export interface PrimaryIconButtonProps {
-  readonly to?: string;
-  readonly children: JSX.Element;
+  readonly icon: JSX.Element;
   readonly label: string;
+  readonly onClick?: () => void;
+  readonly to?: string;
   readonly disabled?: boolean;
   readonly tooltip?: string;
   readonly disabledTooltip?: string;
@@ -14,7 +15,8 @@ export interface PrimaryIconButtonProps {
 }
 
 export default function GdscIconButton({
-  children,
+  icon,
+  onClick,
   to,
   label,
   tooltip,
@@ -33,8 +35,9 @@ export default function GdscIconButton({
         href={to ?? ""}
         aria-label={label}
         size="large"
+        onClick={onClick}
       >
-        {children}
+        {icon}
       </IconButton>
     </StyledTooltip>
   );

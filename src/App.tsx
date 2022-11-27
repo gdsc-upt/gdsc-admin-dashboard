@@ -11,8 +11,9 @@ import { AuthProvider, IfLoggedIn } from "./features/auth";
 import { RedirectRoutes } from "./features/redirects/routes";
 import { TechnologyRoutes } from "./features/technologies/routes";
 import GdscLayout from "./components/app-layout";
-import GdscTheme from "./components/theme/gdsc-theme";
 import { AuthRoutes } from "./features/auth/routes";
+import GdscSnackbarProvider from "./components/snackbar/gdsc-snackbar-provider";
+import GdscThemeProvider from "./components/theme/gdsc-theme-provider";
 
 const router = createBrowserRouter([
   {
@@ -61,8 +62,10 @@ export default function App() {
   useTitle("Admin Dashboard GDSC");
 
   return (
-    <GdscTheme>
-      <RouterProvider router={router} />
-    </GdscTheme>
+    <GdscThemeProvider>
+      <GdscSnackbarProvider>
+        <RouterProvider router={router} />
+      </GdscSnackbarProvider>
+    </GdscThemeProvider>
   );
 }

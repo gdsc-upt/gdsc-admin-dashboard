@@ -1,4 +1,5 @@
 export * from "./components/auth-context";
+export * from "./components/auth-provider";
 export * from "./components/if-not-logged-in";
 export * from "./components/if-logged-in";
 export * from "./pages/login";
