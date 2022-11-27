@@ -1,21 +1,21 @@
-Form {
-  position: relative;
-  width: 400px;
-  margin: 0 auto;
-  border-radius: 5px;
-  padding: 2em;
-  box-sizing: border-box;
-  box-shadow: 5px 7px 30px #484979;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-
-  input, button {
-    height: 40px;
-    margin-top: 7px;
-    margin-bottom: 7px;
-  }
-}
+//Form {
+//  position: relative;
+//  width: 400px;
+//  margin: 0 auto;
+//  border-radius: 5px;
+//  padding: 2em;
+//  box-sizing: border-box;
+//  box-shadow: 5px 7px 30px #484979;
+//  display: flex;
+//  flex-direction: column;
+//  background-color: #fff;
+//
+//  input, button {
+//    height: 40px;
+//    margin-top: 7px;
+//    margin-bottom: 7px;
+//  }
+//}
 
 img {
   max-width: 400px;
@@ -48,48 +48,6 @@ img {
   color: #007bff;
   padding-bottom: 20px;
 }
-
-/*button {
-  height: 50px;
-  width: 170px;
-  background-color: #ffffff;
-  color: #007bff;
-  font: 100% JetBrains Mono, monospace;
-  font-weight: bold;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 5px;
-  border: 2px solid #efefef;
-  text-align: center;
-}*/
-
-/*
-.button-add:hover {
-  background-color: #007bff;
-  color: #ffffff;
-}
-
-.button-delete {
-  background: #ffffff;
-  color: red;
-}
-
-.button-delete:hover {
-  background: red;
-  color: #ffffff;
-}
-
-.button-edit {
-  background: #ffffff;
-  color: #00ff0c;
-}
-
-.button-edit:hover {
-  background: #00ff0c;
-  color: #ffffff;
-}
-*/
-
 
 input {
   border: 2px solid #efefef;
