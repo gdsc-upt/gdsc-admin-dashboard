@@ -4,14 +4,16 @@ import {
 import React from "react";
 import { Color } from "../helpers/constants";
 
-export const StyledTooltip = styled(({
-  className, children, color, ...props
-}: TooltipProps & {color?: Color}) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  <Tooltip {...props} classes={{ popper: className }}>
-    {children}
-  </Tooltip>
-))(({ color, theme: { palette, shadows } }) => {
+export const StyledTooltip = styled(
+  ({
+    className, children, color, ...props
+  }: TooltipProps & { color?: Color }) => (
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <Tooltip {...props} classes={{ popper: className }}>
+      <span>{children}</span>
+    </Tooltip>
+  ),
+)(({ color, theme: { palette, shadows } }) => {
   const colorRecord: Record<string, any> = palette[color ?? "background"];
 
   return {
