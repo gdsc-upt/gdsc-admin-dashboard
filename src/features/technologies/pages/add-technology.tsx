@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   Box, Button,
 } from "@mui/material";
@@ -54,17 +54,6 @@ export default function AddTechnology({ onAdded }: AddTechnologyProps) {
     return false;
   };
 
-  const inputRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (open && inputRef.current) {
-        inputRef.current.focus();
-      }
-    }, 0);
-
-    return () => clearTimeout(timeout);
-  }, [open]);
-
   return (
     <>
       <PrimaryButton text="Add" onClick={handleOpen} />
@@ -83,7 +72,7 @@ export default function AddTechnology({ onAdded }: AddTechnologyProps) {
                 <Form className="Form">
                   <span className="text-center">Add technology</span>
                   <TextField
-                    inputRef={inputRef}
+                    autoFocus
                     id="outlined-basic"
                     label="Title"
                     variant="outlined"
