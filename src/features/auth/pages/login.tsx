@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -9,35 +7,23 @@ import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { useLocation } from "react-router-dom";
 import { AxiosError } from "axios";
-import { LoginForm } from "../components/login-form";
+import { Alert } from "@mui/material";
 import { Logo } from "../../../components/logo";
 import { LoginRequest } from "../models/login.request";
 import { URLS } from "../../../helpers/constants";
 import { useAuth } from "../components/auth-context";
 import { useRouting } from "../../../routing";
 
-export function LoginPagess() {
-  return (
-    <>
-      <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <Logo />
-      </Box>
-      <LoginForm />
-    </>
-  );
-}
-
 function Copyright(props: any) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://gdscupt.tech/">
+        GDSC UPT Developers
       </Link>
       {" "}
       {new Date().getFullYear()}
@@ -81,13 +67,14 @@ export function LoginPage() {
         sm={4}
         md={7}
         sx={{
-          backgroundImage: "url(../../../assets/images/gdsc-logo.png)",
+          backgroundImage: "url(assets/images/gdsc-logo.png)",
           backgroundRepeat: "no-repeat",
           backgroundColor: t => (t.palette.mode === "light" ? t.palette.grey[50] : t.palette.grey[900]),
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       />
+
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <Box
           sx={{
@@ -98,23 +85,29 @@ export function LoginPage() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Logo />
+
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
+
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            {error ? (
+              <Alert sx={{ height: "100%" }} className="mb-2" severity="error">
+                {error}
+              </Alert>
+            ) : null}
+
             <TextField
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
+              label="Email Address or Username"
               name="email"
               autoComplete="email"
               autoFocus
             />
+
             <TextField
               margin="normal"
               required
@@ -122,28 +115,32 @@ export function LoginPage() {
               name="password"
               label="Password"
               type="password"
-              id="password"
               autoComplete="current-password"
             />
+
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Sign In
             </Button>
+
             <Grid container>
               <Grid item xs>
                 <Link href="/register" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
+
               <Grid item>
                 <Link href="/register" variant="body2">
                   No account? Sign Up
                 </Link>
               </Grid>
             </Grid>
+
             <Copyright sx={{ mt: 5 }} />
           </Box>
         </Box>
