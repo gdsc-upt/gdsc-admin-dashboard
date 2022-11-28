@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
-  IconButton,
   Paper,
   Table,
   TableBody,
@@ -13,21 +12,20 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Redirect } from "../models/redirect";
 import { deleteRedirect, getRedirects } from "../redirects-api";
-import { EditRedirect } from "../components/edit-redirect";
-import { AddRedirect } from "../components/add-redirect";
+import { EditRedirectModal } from "../components/edit-redirect-modal";
+import { AddRedirectModal } from "../components/add-redirect-modal";
 import ActionsBar from "../../../components/actions-bar";
 import RedirectsActionsTitle from "../components/redirects-actions-title";
+import GdscIconButton from "../../../components/buttons/gdsc-icon-button";
 
 export function RedirectsPage() {
   const [redirects, setRedirects] = useState<Redirect[]>([]);
 
   useEffect(() => {
-    console.log("test");
     getRedirects().then(setRedirects);
   }, []);
 
   const fetchData = async () => {
-    console.log(redirects);
     getRedirects().then(setRedirects);
   };
 
@@ -41,7 +39,7 @@ export function RedirectsPage() {
       <Box sx={{ marginBottom: 2 }}>
         <ActionsBar
           middleContent={<RedirectsActionsTitle />}
-          rightContent={<AddRedirect onAdded={fetchData} />}
+          rightContent={<AddRedirectModal onAdded={fetchData} />}
         />
       </Box>
 
@@ -51,8 +49,7 @@ export function RedirectsPage() {
             <TableRow>
               <TableCell>Path</TableCell>
               <TableCell>Redirect To</TableCell>
-              <TableCell>Delete</TableCell>
-              <TableCell>Edit</TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -61,16 +58,14 @@ export function RedirectsPage() {
                 <TableCell>{r.path}</TableCell>
                 <TableCell>{r.redirectTo}</TableCell>
                 <TableCell>
-                  <IconButton
-                    aria-label="delete"
-                    size="large"
+                  <GdscIconButton
                     onClick={() => onDeleteClick(r.path)}
-                  >
-                    <DeleteIcon fontSize="inherit" />
-                  </IconButton>
-                </TableCell>
-                <TableCell>
-                  <EditRedirect onEdited={fetchData} initialRedirect={r} />
+                    color="error"
+                    tooltip="Open a modal to delete this redirect"
+                    label="Delete"
+                    icon={<DeleteIcon />}
+                  />
+                  <EditRedirectModal onEdited={fetchData} initialRedirect={r} />
                 </TableCell>
               </TableRow>
             ))}
