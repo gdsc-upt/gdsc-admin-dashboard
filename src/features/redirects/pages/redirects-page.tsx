@@ -61,7 +61,7 @@ export function RedirectsPage() {
                   <GdscIconButton
                     onClick={() => onDeleteClick(r.path)}
                     color="error"
-                    tooltip="Open a modal to delete this redirect"
+                    tooltip="Delete this redirect"
                     label="Delete"
                     icon={<DeleteIcon />}
                   />

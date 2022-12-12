@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -16,6 +16,7 @@ import { LoginRequest } from "../models/login.request";
 import { URLS } from "../../../helpers/constants";
 import { useAuth } from "../components/auth-context";
 import { useRouting } from "../../../routing";
+import { getDadJoke, JokeModel } from "../components/dad-jokes";
 
 function Copyright(props: any) {
   return (
@@ -37,6 +38,15 @@ export function LoginPage() {
   const { routeTo } = useRouting();
   const auth = useAuth();
   const location = useLocation();
+  const [dadJoke, setDadJoke] = useState<JokeModel | undefined>(undefined);
+
+  useEffect(() => {
+    getDadJoke().then(res => {
+      setDadJoke(res);
+      console.log(res);
+      console.log(res.punchline);
+    });
+  }, []);
 
   const handleError = (apiError: AxiosError) => {
     if (apiError.response?.status === 401) {
@@ -61,20 +71,14 @@ export function LoginPage() {
 
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
-      <Grid
-        item
-        xs={false}
-        sm={4}
-        md={7}
-        sx={{
-          backgroundImage: "url(assets/images/gdsc-logo.png)",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: t => (t.palette.mode === "light" ? t.palette.grey[50] : t.palette.grey[900]),
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-
+      <Grid item sm={4} md={7} sx={{}}>
+        <Typography align="center" marginTop={20} variant="h3">
+          {dadJoke?.setup}
+        </Typography>
+        <Typography align="center" marginTop={20} variant="h3">
+          {dadJoke?.punchline}
+        </Typography>
+      </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <Box
           sx={{
