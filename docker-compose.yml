@@ -1,0 +1,6 @@
+services:
+  admin:
+    build: .
+    container_name: admin
+    ports:
+      - "3000:3000"

@@ -43,8 +43,6 @@ export function LoginPage() {
   useEffect(() => {
     getDadJoke().then(res => {
       setDadJoke(res);
-      console.log(res);
-      console.log(res.punchline);
     });
   }, []);
 

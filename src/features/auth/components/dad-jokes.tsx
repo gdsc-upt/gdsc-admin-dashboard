@@ -30,24 +30,15 @@ const dadJokesApiBackupBackup = axios.create({
 });
 
 export async function getDadJoke() {
-  const request = dadJokesApi.get("https://dad-jokes.p.rapidapi.com/random/joke/");
-  const status = await request.then(response => response.status);
-  if (status === 200) {
-    return request.then(response => response.data.body[0]);
+  let response;
+  try {
+    response = await dadJokesApi.get("https://dad-jokes.p.rapidapi.com/random/joke/");
+  } catch (e) {
+    try {
+      response = await dadJokesApiBackup.get("https://dad-jokes.p.rapidapi.com/random/joke/");
+    } catch (ex) {
+      response = await dadJokesApiBackupBackup.get("https://dad-jokes.p.rapidapi.com/random/joke/");
+    }
   }
-  const backupRequest = dadJokesApiBackup.get("https://dad-jokes.p.rapidapi.com/random/joke/");
-  const backupStatus = await request.then(response => response.status);
-  if (backupStatus === 200) {
-    return backupRequest.then(response => response.data.body[0]);
-  }
-  const backupBackupRequest = dadJokesApiBackupBackup.get(
-    "https://dad-jokes.p.rapidapi.com/random/joke/",
-  );
-
-  const backupBackupStatus = await request.then(response => response.status);
-  if (backupBackupStatus === 200) {
-    return backupBackupRequest.then(response => response.data.body[0]);
-  }
-  console.log("ghinion boss");
-  return backupBackupRequest.then(response => response.data.body[0]);
+  return response.data.body[0];
 }
