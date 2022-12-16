@@ -13,3 +13,5 @@ RUN yarn build
 EXPOSE 3000
 
 CMD ["yarn", "start"]
+
+LABEL org.opencontainers.image.source=https://github.com/OWNER/REPO
