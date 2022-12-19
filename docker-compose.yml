@@ -1,6 +1,6 @@
 services:
-  admin:
+  admin-dashboard:
     build: .
-    container_name: admin
+    container_name: admin-dashboard
     ports:
       - "3000:3000"

@@ -1,12 +1,12 @@
-FROM node:18.0.0
+FROM node:lts-alpine
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /app
+WORKDIR /app
 
-COPY package.json /usr/src/app/
+COPY package.json yarn.lock /app/
 RUN yarn install
 
-COPY . /usr/src/app
+COPY . /app
 
 RUN yarn build
 
@@ -14,4 +14,4 @@ EXPOSE 3000
 
 CMD ["yarn", "start"]
 
-LABEL org.opencontainers.image.source=https://github.com/OWNER/REPO
+LABEL org.opencontainers.image.source=https://github.com/dsc-upt/gdsc-admin-dashboard
