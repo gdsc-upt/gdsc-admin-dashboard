@@ -2,7 +2,7 @@ name: GDSC Admin Dashboard
 
 on:
   push:
-    branches: [ main, dev ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -47,7 +47,7 @@ jobs:
           BRANCH: ${{ needs.build.outputs.BRANCH }}
         with:
           host: gdscupt.tech
-          #port: 69
+          port: 69
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: /home/docker/deploy/deploy.sh /home/docker/gdsc/admin-dashboard-${{ env.BRANCH }}
