@@ -1,6 +1,7 @@
 services:
   admin-dashboard:
+    #    image: ghcr.io/dsc-upt/gdsc-admin-dashboard-main:latest
     build: .
     container_name: admin-dashboard
     ports:
-      - "3000:3000"
+      - "3000:80"
