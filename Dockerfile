@@ -10,6 +10,8 @@ RUN yarn install --production
 
 COPY . /app
 
+RUN ls -al /app
+
 RUN yarn build
 
 EXPOSE 3000
