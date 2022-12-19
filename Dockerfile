@@ -1,10 +1,12 @@
 FROM node:lts-alpine
 
-RUN mkdir -p /app
 WORKDIR /app
 
+ENV NODE_ENV=production
+
 COPY package.json yarn.lock /app/
-RUN yarn install
+
+RUN yarn install --production
 
 COPY . /app
 
