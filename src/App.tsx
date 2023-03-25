@@ -9,7 +9,7 @@ import { URLS } from "./helpers/constants";
 import { Dashboard } from "./features/dashboard/dashboard";
 import { AuthProvider, IfLoggedIn } from "./features/auth";
 import { RedirectRoutes } from "./features/redirects/routes";
-import { TechnologyRoutes } from "./features/technologies/routes";
+import { MenuItemRoutes, TechnologyRoutes } from "./features/technologies/routes";
 import GdscLayout from "./components/app-layout";
 import { AuthRoutes } from "./features/auth/routes";
 import GdscSnackbarProvider from "./components/snackbar/gdsc-snackbar-provider";
@@ -44,6 +44,7 @@ const router = createBrowserRouter([
           },
           ...RedirectRoutes(),
           ...TechnologyRoutes(),
+          ...MenuItemRoutes(),
           {
             path: "*",
             element: <Navigate to={URLS.dashboard} />,

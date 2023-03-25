@@ -1,30 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Grid } from "@mui/material";
 import { getMenuItems } from "../menu-items.api";
 import { MenuItem } from "../models/menu-item";
-import { MENU_ITEMS_URLS } from "../urls";
+import MenuItemCard from "../components/menu-item-card";
+import { AddMenuItemModal } from "../components/add-menu-item-modal";
 
 export function MenuItems() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const fetchData = async () => {
+    getMenuItems().then(setMenuItems);
+  };
 
   useEffect(() => {
-    console.log("Fetch MenuItems");
-    getMenuItems().then(setMenuItems);
+    fetchData();
   }, []);
 
   return (
-    <div>
-      {menuItems.map(item => (
-        <div key={item.id}>
-          <div>{item.name}</div>
-          <div>{item.link}</div>
-        </div>
-      ))}
-
-      <Link to={MENU_ITEMS_URLS.addMenuItem}>
-        <Button type="button">Add menu item</Button>
-      </Link>
-    </div>
+    <>
+      <Grid
+        container
+        spacing={4}
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="center"
+        style={{ minHeight: "80vh" }}
+        rowSpacing={1}
+        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      >
+        {menuItems.map(mi => (
+          <Grid item xs={3} key={mi.id} sx={{ display: "flex", justifyContent: "center" }}>
+            <MenuItemCard menuItem={mi} />
+          </Grid>
+        ))}
+      </Grid>
+      <AddMenuItemModal fetchData={fetchData} />
+    </>
   );
 }
